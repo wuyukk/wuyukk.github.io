@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>anthony</title><link href="http://wuyukk.github.io/" rel="alternate"></link><link href="http://wuyukk.github.io/feeds/espruino.atom.xml" rel="self"></link><id>http://wuyukk.github.io/</id><updated>2015-10-13T16:30:00+02:00</updated><entry><title>Espruino Build</title><link href="http://wuyukk.github.io/espruino-build.html" rel="alternate"></link><updated>2015-10-13T16:30:00+02:00</updated><author><name>anthony</name></author><id>tag:wuyukk.github.io,2015-10-13:espruino-build.html</id><summary type="html">&lt;h2 id="623389aaa759c396fe6195571b8d948a"&gt;Espruino Build&lt;/h2&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>anthony</title><link href="http://anthony42.xyz/" rel="alternate"></link><link href="http://anthony42.xyz/feeds/espruino.atom.xml" rel="self"></link><id>http://anthony42.xyz/</id><updated>2015-10-13T16:30:00+02:00</updated><entry><title>Espruino Build</title><link href="http://anthony42.xyz/espruino-build.html" rel="alternate"></link><updated>2015-10-13T16:30:00+02:00</updated><author><name>anthony</name></author><id>tag:anthony42.xyz,2015-10-13:espruino-build.html</id><summary type="html">&lt;h2 id="623389aaa759c396fe6195571b8d948a"&gt;Espruino Build&lt;/h2&gt;
 &lt;p&gt;Espruino is easy to build under Linux, and it is possible to build under MacOS with some effort. If you don't have Linux it's much easier to install it in a Virtual Machine. See the heading Building under Windows/MacOS with a VM below for more information.
 for STM32 Boards (incl. Espruino Board)&lt;/p&gt;
 &lt;p&gt;The (previously suggested) CodeSourcery GCC compiler is no longer available. We'd suggest you use &lt;a href="https://launchpad.net/gcc-arm-embedded/+download"&gt;gcc-arm-embedded&lt;/a&gt;.
@@ -33,7 +33,7 @@ TX  USART1_RX   A10
 RX  USART1_TX   A9
 -   BOOT0 - 3.3V    BOOT0
 GND     BOOT1 - 0V  B2&lt;/p&gt;
-&lt;p&gt;Note: BOOT0 is in a group of two pins (RST and BOOT0) in the middle of the top edge of the board.&lt;/p&gt;</summary></entry><entry><title>espruino</title><link href="http://wuyukk.github.io/espruino.html" rel="alternate"></link><updated>2015-10-10T22:00:00+02:00</updated><author><name>anthony</name></author><id>tag:wuyukk.github.io,2015-10-10:espruino.html</id><summary type="html">&lt;h1 id="41695b9f392689e6d65073f725ceede0"&gt;Espruino JavaScript for Microcontrollers&lt;/h1&gt;
+&lt;p&gt;Note: BOOT0 is in a group of two pins (RST and BOOT0) in the middle of the top edge of the board.&lt;/p&gt;</summary></entry><entry><title>espruino</title><link href="http://anthony42.xyz/espruino.html" rel="alternate"></link><updated>2015-10-10T22:00:00+02:00</updated><author><name>anthony</name></author><id>tag:anthony42.xyz,2015-10-10:espruino.html</id><summary type="html">&lt;h1 id="41695b9f392689e6d65073f725ceede0"&gt;Espruino JavaScript for Microcontrollers&lt;/h1&gt;
 &lt;p&gt;&lt;pre&gt;
 &lt;strong&gt;&lt;em&gt;_&lt;/em&gt;                 _
 |   &lt;/strong&gt;|&lt;strong&gt;&lt;em&gt; &lt;/em&gt;&lt;/strong&gt; &lt;strong&gt;&lt;em&gt; _ &lt;/em&gt;|_|&lt;/strong&gt;&lt;em&gt; &lt;strong&gt;&lt;em&gt;

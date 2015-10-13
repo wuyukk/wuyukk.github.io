@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>anthony</title><link href="http://wuyukk.github.io/" rel="alternate"></link><link href="http://wuyukk.github.io/feeds/all.atom.xml" rel="self"></link><id>http://wuyukk.github.io/</id><updated>2015-10-13T16:30:00+02:00</updated><entry><title>Espruino Build</title><link href="http://wuyukk.github.io/espruino-build.html" rel="alternate"></link><updated>2015-10-13T16:30:00+02:00</updated><author><name>anthony</name></author><id>tag:wuyukk.github.io,2015-10-13:espruino-build.html</id><summary type="html">&lt;h2 id="623389aaa759c396fe6195571b8d948a"&gt;Espruino Build&lt;/h2&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>anthony</title><link href="http://anthony42.xyz/" rel="alternate"></link><link href="http://anthony42.xyz/feeds/all.atom.xml" rel="self"></link><id>http://anthony42.xyz/</id><updated>2015-10-13T16:30:00+02:00</updated><entry><title>Espruino Build</title><link href="http://anthony42.xyz/espruino-build.html" rel="alternate"></link><updated>2015-10-13T16:30:00+02:00</updated><author><name>anthony</name></author><id>tag:anthony42.xyz,2015-10-13:espruino-build.html</id><summary type="html">&lt;h2 id="623389aaa759c396fe6195571b8d948a"&gt;Espruino Build&lt;/h2&gt;
 &lt;p&gt;Espruino is easy to build under Linux, and it is possible to build under MacOS with some effort. If you don't have Linux it's much easier to install it in a Virtual Machine. See the heading Building under Windows/MacOS with a VM below for more information.
 for STM32 Boards (incl. Espruino Board)&lt;/p&gt;
 &lt;p&gt;The (previously suggested) CodeSourcery GCC compiler is no longer available. We'd suggest you use &lt;a href="https://launchpad.net/gcc-arm-embedded/+download"&gt;gcc-arm-embedded&lt;/a&gt;.
@@ -33,7 +33,7 @@ TX  USART1_RX   A10
 RX  USART1_TX   A9
 -   BOOT0 - 3.3V    BOOT0
 GND     BOOT1 - 0V  B2&lt;/p&gt;
-&lt;p&gt;Note: BOOT0 is in a group of two pins (RST and BOOT0) in the middle of the top edge of the board.&lt;/p&gt;</summary></entry><entry><title>git config pretty-formats</title><link href="http://wuyukk.github.io/git-config-pretty-formats.html" rel="alternate"></link><updated>2015-10-12T00:09:00+02:00</updated><author><name>anthony</name></author><id>tag:wuyukk.github.io,2015-10-12:git-config-pretty-formats.html</id><summary type="html">&lt;h3 id="50dbd9c7e0e42af2595cc059912ff277"&gt;colorful output&lt;/h3&gt;
+&lt;p&gt;Note: BOOT0 is in a group of two pins (RST and BOOT0) in the middle of the top edge of the board.&lt;/p&gt;</summary></entry><entry><title>git config pretty-formats</title><link href="http://anthony42.xyz/git-config-pretty-formats.html" rel="alternate"></link><updated>2015-10-12T00:09:00+02:00</updated><author><name>anthony</name></author><id>tag:anthony42.xyz,2015-10-12:git-config-pretty-formats.html</id><summary type="html">&lt;h3 id="50dbd9c7e0e42af2595cc059912ff277"&gt;colorful output&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;git config --global color.status auto&lt;/li&gt;
 &lt;li&gt;git config --global color.diff auto&lt;/li&gt;
@@ -45,7 +45,7 @@ GND     BOOT1 - 0V  B2&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;git config --global alias.lg "log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)&amp;lt;%an&amp;gt;%Creset' --abbrev-commit --date=relative"&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;for more info, please have a look at &lt;a href="http://git-scm.com/docs/pretty-formats" title="look up all the command"&gt;&lt;strong&gt;git-scm&lt;/strong&gt;&lt;/a&gt;.&lt;/p&gt;</summary></entry><entry><title>espruino</title><link href="http://wuyukk.github.io/espruino.html" rel="alternate"></link><updated>2015-10-10T22:00:00+02:00</updated><author><name>anthony</name></author><id>tag:wuyukk.github.io,2015-10-10:espruino.html</id><summary type="html">&lt;h1 id="41695b9f392689e6d65073f725ceede0"&gt;Espruino JavaScript for Microcontrollers&lt;/h1&gt;
+&lt;p&gt;for more info, please have a look at &lt;a href="http://git-scm.com/docs/pretty-formats" title="look up all the command"&gt;&lt;strong&gt;git-scm&lt;/strong&gt;&lt;/a&gt;.&lt;/p&gt;</summary></entry><entry><title>espruino</title><link href="http://anthony42.xyz/espruino.html" rel="alternate"></link><updated>2015-10-10T22:00:00+02:00</updated><author><name>anthony</name></author><id>tag:anthony42.xyz,2015-10-10:espruino.html</id><summary type="html">&lt;h1 id="41695b9f392689e6d65073f725ceede0"&gt;Espruino JavaScript for Microcontrollers&lt;/h1&gt;
 &lt;p&gt;&lt;pre&gt;
 &lt;strong&gt;&lt;em&gt;_&lt;/em&gt;                 _
 |   &lt;/strong&gt;|&lt;strong&gt;&lt;em&gt; &lt;/em&gt;&lt;/strong&gt; &lt;strong&gt;&lt;em&gt; _ &lt;/em&gt;|_|&lt;/strong&gt;&lt;em&gt; &lt;strong&gt;&lt;em&gt;
@@ -153,7 +153,7 @@ clear up a lot of potential questions about the Espruino architecture.&lt;/p&gt;
 so because we make money from the sales of Espruino boards. If your users request
 support from us then we have absolutely no obligation to help them. However, we'll
 be a lot more motivated if you're actively helping to improve Espruino for all its
-users (not just your own).&lt;/p&gt;</summary></entry><entry><title>VIM Config</title><link href="http://wuyukk.github.io/vim-config.html" rel="alternate"></link><updated>2015-10-10T22:00:00+02:00</updated><author><name>anthony</name></author><id>tag:wuyukk.github.io,2015-10-10:vim-config.html</id><summary type="html">&lt;ul&gt;
+users (not just your own).&lt;/p&gt;</summary></entry><entry><title>VIM Config</title><link href="http://anthony42.xyz/vim-config.html" rel="alternate"></link><updated>2015-10-10T22:00:00+02:00</updated><author><name>anthony</name></author><id>tag:anthony42.xyz,2015-10-10:vim-config.html</id><summary type="html">&lt;ul&gt;
 &lt;li&gt;
 &lt;p&gt;set nu         // 这是设置显示行号&lt;/p&gt;
 &lt;/li&gt;
@@ -170,7 +170,7 @@ users (not just your own).&lt;/p&gt;</summary></entry><entry><title>VIM Config</
 &lt;p&gt;syntax on    // 即设置语法检测，当编辑C或者Shell脚本时，关键字会用特殊颜色显示&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;hr/&gt;</summary></entry><entry><title>yum tricks</title><link href="http://wuyukk.github.io/yum-tricks.html" rel="alternate"></link><updated>2015-10-10T21:46:00+02:00</updated><author><name>anthony</name></author><id>tag:wuyukk.github.io,2015-10-10:yum-tricks.html</id><summary type="html">&lt;h1 id="45d46497cc95919594d8173e2e6c5924"&gt;Yum Tricks and Tips&lt;/h1&gt;
+&lt;hr/&gt;</summary></entry><entry><title>yum tricks</title><link href="http://anthony42.xyz/yum-tricks.html" rel="alternate"></link><updated>2015-10-10T21:46:00+02:00</updated><author><name>anthony</name></author><id>tag:anthony42.xyz,2015-10-10:yum-tricks.html</id><summary type="html">&lt;h1 id="45d46497cc95919594d8173e2e6c5924"&gt;Yum Tricks and Tips&lt;/h1&gt;
 &lt;p&gt;Note: These tricks are only available on SLF5 and newer releases. They require yum 3.2.22 or newer.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;yum provides (feature)
@@ -214,7 +214,7 @@ Is just an alias for groupinstall, which will do the right thing because "yum in
 &lt;p&gt;Even More&lt;/p&gt;
 &lt;p&gt;If you want to find even more things that rpm can do, the best place to start is the man page, followed by the Yum Wiki.
 &lt;code&gt;man yum&lt;/code&gt;
-Yum Wiki &lt;/p&gt;</summary></entry><entry><title>Markdown</title><link href="http://wuyukk.github.io/markdown.html" rel="alternate"></link><updated>2015-10-10T00:00:00+02:00</updated><author><name>anthony</name></author><id>tag:wuyukk.github.io,2015-10-10:markdown.html</id><summary type="html">&lt;p&gt;[Markdown was created to be easy to read, easy to write, and still readable in plain text format.]&lt;/p&gt;</summary></entry><entry><title>Host Backup网站备份脚本</title><link href="http://wuyukk.github.io/host-backupwang-zhan-bei-fen-jiao-ben.html" rel="alternate"></link><updated>2013-08-08T12:14:00+02:00</updated><author><name>anthony</name></author><id>tag:wuyukk.github.io,2013-08-08:host-backupwang-zhan-bei-fen-jiao-ben.html</id><summary type="html">&lt;p&gt;使用python脚本进行网站备份和恢复，可以通过配置文件自定义备份选项。仅支持linux系统和mysql数据库，在debian6上测试和使用。&lt;/p&gt;
+Yum Wiki &lt;/p&gt;</summary></entry><entry><title>Markdown</title><link href="http://anthony42.xyz/markdown.html" rel="alternate"></link><updated>2015-10-10T00:00:00+02:00</updated><author><name>anthony</name></author><id>tag:anthony42.xyz,2015-10-10:markdown.html</id><summary type="html">&lt;p&gt;[Markdown was created to be easy to read, easy to write, and still readable in plain text format.]&lt;/p&gt;</summary></entry><entry><title>Host Backup网站备份脚本</title><link href="http://anthony42.xyz/host-backupwang-zhan-bei-fen-jiao-ben.html" rel="alternate"></link><updated>2013-08-08T12:14:00+02:00</updated><author><name>anthony</name></author><id>tag:anthony42.xyz,2013-08-08:host-backupwang-zhan-bei-fen-jiao-ben.html</id><summary type="html">&lt;p&gt;使用python脚本进行网站备份和恢复，可以通过配置文件自定义备份选项。仅支持linux系统和mysql数据库，在debian6上测试和使用。&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;当前版本: 0.0.4&lt;/li&gt;
 &lt;li&gt;最后更新: 2013.11.13&lt;/li&gt;
