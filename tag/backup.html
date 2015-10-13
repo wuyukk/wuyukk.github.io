@@ -1,240 +1,93 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-        <meta charset="utf-8" />
-        <title>anthony - backup</title>
-        <link rel="stylesheet" href="http://wuyukk.github.io/theme/css/main.css" />
-        <link href="http://wuyukk.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="anthony Atom Feed" />
+  <meta charset="utf-8">
+  <!-- Site Meta Data -->
+  <title>anthony - backup</title>
+  <meta name="description" content="">
+  <meta name="author" content="anthony">
 
-        <!--[if IE]>
-            <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-        <![endif]-->
+  <!-- Style Meta Data -->
+  <link rel="stylesheet" href="http://wuyukk.github.io/theme/css/notebook.css" type="text/css" />
+  <link rel="shortcut icon" href="http://wuyukk.github.io/">
+
+  <!-- Feed Meta Data -->
+  <link href="http://wuyukk.github.io/" type="application/atom+xml" rel="alternate" title="anthony ATOM Feed" />
+
+  <!-- Twitter Feed -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="">
+  <meta name="twitter:image" content="http://wuyukk.github.io/">
+
+<meta name="twitter:creator" content="">
+<meta name="twitter:url" content="http://wuyukk.github.io">
+<meta name="twitter:title" content="anthony">
+<meta name="twitter:description" content="">
+
+<!-- Facebook Meta Data -->
+<meta property="og:title" content="anthony" />
+<meta property="og:description" content="" />
+<meta property="og:image" content="" />
+
+<meta name="twitter:creator" content="">
+<meta name="twitter:url" content="http://wuyukk.github.io/tag/backup.html">
+<meta name="twitter:title" content="anthony ~ backup">
+<meta name="twitter:description" content="Articles de backup">
+
+<!-- Facebook Meta Data -->
+<meta property="og:title" content="anthony ~ backup" />
+<meta property="og:description" content="Articles de backup" />
+<meta property="og:image" content="" />
 </head>
 
-<body id="index" class="home">
-        <header id="banner" class="body">
-                <h1><a href="http://wuyukk.github.io/">anthony </a></h1>
-                <nav><ul>
-                    <li><a href="http://wuyukk.github.io/category/editor.html">editor</a></li>
-                    <li><a href="http://wuyukk.github.io/category/espruino.html">espruino</a></li>
-                    <li><a href="http://wuyukk.github.io/category/git.html">git</a></li>
-                    <li><a href="http://wuyukk.github.io/category/test.html">test</a></li>
-                    <li><a href="http://wuyukk.github.io/category/yum.html">YUM</a></li>
-                </ul></nav>
-        </header><!-- /#banner -->
+<body>
+  <!-- Sidebar -->
+  <aside>
+    <p><a href="http://wuyukk.github.io"><img id="avatar" src="http://wuyukk.github.io/"></a></p>
+    <h1>anthony</h1>
+    <p></p>
+    <hr>
+    <h2>Social</h2>
+    <ul class="social">
+      <li style="list-style-image : url(http://wuyukk.github.io/theme/images/icons/you can add links in your config file.png);"><a href="#">You can add links in your config file</a></li>
+      <li style="list-style-image : url(http://wuyukk.github.io/theme/images/icons/another social link.png);"><a href="#">Another social link</a></li>
+      <li style="list-style-image : url(http://wuyukk.github.io/theme/images/icons/rss.png);"><a href="http://wuyukk.github.io/" rel="alternate"><i class="icon-bookmark icon-large"></i>Atom feed</a></li>
+    </ul>
+    <h2>Categories</h2>
+    <ul class="navbar">
+      <li><a href="http://wuyukk.github.io/category/editor.html">editor</a></li>
+      <li><a href="http://wuyukk.github.io/category/espruino.html">espruino</a></li>
+      <li><a href="http://wuyukk.github.io/category/git.html">git</a></li>
+      <li><a href="http://wuyukk.github.io/category/test.html">test</a></li>
+      <li><a href="http://wuyukk.github.io/category/yum.html">YUM</a></li>
+    </ul> 
+  </aside>
 
-            <aside id="featured" class="body">
-                <article>
-                    <h1 class="entry-title"><a href="http://wuyukk.github.io/host-backupwang-zhan-bei-fen-jiao-ben.html">Host Backup网站备份脚本</a></h1>
-<footer class="post-info">
-        <abbr class="published" title="2013-08-08T12:14:00+02:00">
-                Published: Thu 08 August 2013
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="http://wuyukk.github.io/author/anthony.html">anthony</a>
-        </address>
-<p>In <a href="http://wuyukk.github.io/category/test.html">test</a>.</p>
-<p>tags: <a href="http://wuyukk.github.io/tag/python.html">python</a> <a href="http://wuyukk.github.io/tag/backup.html">backup</a> </p>
-</footer><!-- /.post-info --><p>使用python脚本进行网站备份和恢复，可以通过配置文件自定义备份选项。仅支持linux系统和mysql数据库，在debian6上测试和使用。</p>
-<ul>
-<li>当前版本: 0.0.4</li>
-<li>最后更新: 2013.11.13</li>
-<li>许可协议: <a href="http://www.apache.org/licenses/LICENSE-2.0.html">Apache License, Version 2.0</a></li>
-<li>代码仓库: <a href="https://github.com/wilbur-ma/host-backup">Github</a></li>
-<li>下载地址: <a href="https://github.com/wilbur-ma/host-backup/archive/master.zip">最新版本</a></li>
-</ul>
-<h2>介绍</h2>
-<h3>更新历史</h3>
-<ul>
-<li>0.0.4    2013.11.13    发送邮件时，会把备份时产生的错误输出作为邮件正文一起发送</li>
-<li>0.0.3    2012.11.27    增加dropbox支持(需要<a href="https://www.dropbox.com/developers/reference/sdk">dropbox sdk</a>)</li>
-<li>0.0.2    2012.11.02    增加发送邮件功能</li>
-<li>0.0.1    2012.10.26    第一个测试版本</li>
-</ul>
-<h3>依赖的软件</h3>
-<ul>
-<li>python2.6或python2.7</li>
-<li>gnu tar - 文件打包</li>
-<li>mysqldump, mysqlshow - 备份数据库和验证数据库密码</li>
-<li>exim4, mutt - 通过邮件发送备份数据</li>
-<li><a href="https://www.dropbox.com/developers/reference/sdk">dropbox sdk</a> (如果使用dropbox备份功能)</li>
-</ul>
-<h3>文件列表</h3>
-<ul>
-<li><a href="#backup-config.ini">backup-config.ini</a> 备份和恢复的配置文件</li>
-<li>host-admin.py 用于备份和恢复</li>
-<li>aes.py aes加密和解密，取自<a href="http://code.google.com/p/slowaes/">slowaes工程</a></li>
-</ul>
-<h3>注意事项</h3>
+  <!-- Content -->
+  <article>
 <ol>
-<li>在debian上，备份/etc/mysql时必须同时备份mysql数据库中的mysql，否则恢复后会有<code>Stopping MySQL database server: mysqld failed</code>错误，解决方法可以参考<a href="/note/mysql-problems.html#a1acdbd356b3fe3bcf56df30de626dd0">这里</a><ol>
-<li>如果用exim4发送邮件时因为附件太大而发送失败，可以在/etc/exim4/update-exim4.conf.conf添加如下一行<code>MESSAGE_SIZE_LIMIT=1000m</code>，将1000m改为你需要的大小限制即可。</li>
+	<li class="post_list"><p class="post_entry">
+		<h2 class="post_title"><a href="http://wuyukk.github.io/host-backupwang-zhan-bei-fen-jiao-ben.html" rel="bookmark" title="Permalink to Host Backup网站备份脚本">Host Backup网站备份脚本</a></h2>
+		<a href="http://wuyukk.github.io/author/anthony.html">@anthony</a>
+		<span> dans </span>
+		<span class="post_category"><a href="http://wuyukk.github.io/category/test.html" rel="bookmark" title="Permalink to test">[ test ]</a></span>
+		<span> le </span>
+		<span class="post_date">Thu 08 August 2013</span>
+	</li>
 </ol>
-</li>
-</ol>
-<h3>使用说明</h3>
-<div class="highlight"><pre>1.  安装依赖的软件。
-2.  为脚本添加执行权限`chmod +x host-admin.py`。
-3.  根据需要修改配置文件。
-4.  进行备份或恢复: 
-* `./host-admin.py -c daily-backup.ini -b` 使用daily-backup.ini中的配置进行备份
-* `./host-admin.py -c daily-backup.ini -f host-backup.tar -r`使用daily-backup.ini中的配置和host-backup.tar中的数据进行恢复。
-</pre></div>
 
 
-<h2>配置文件说明</h2>
-<h3>backup-config.ini</h3>
-<div class="highlight"><pre>1.  第一次使用需要按提示设置mysql密码，加密后存于配置文件中。
-2.  如果想使用新的Mysql用户或密码，只需将DB.Mysql里的User和Passwor的值设为0。
-3.  FileList里的路径必须为绝对路径，多个路径必须使用分号`:`隔开。
-4.  OwnerList使用chown修改FileList中对应项的用户归属，其中项的名称必须和FileList中的名称一致。按照下面的配置文件恢复文件后，将FileList中Dokuwiki_Data项所包含的所有路径的归属用户和归属组改为www-data，即`chown www-data:www-data %path%`。
-5.  将Mail_List设为0可禁用邮件发送功能。多个邮件地址可用分号&quot;:&quot;隔开。
-6.  Exclude_VCS使用gnu tar的`--exclude-vcs`选项实现。
-7.  Exclude_Pattern使用gnu tar的`--exclude`选项实现，多个pattern使用分号&quot;:&quot;隔开，例如剔除后缀为tmp的文件，/var/blog/tmp目录，名为conf.d的目录和所有隐藏文件(文件夹)，可以使用如下pattern: `*.tmp:/var/blog/tmp:conf.d:\.*`，单个Pattern的详细说明请参考[GNU Tar文档](http://www.gnu.org/software/tar/manual/html_node/exclude.html)。
+  </article>
 
-:::ini
-[OwnerList]
-dokuwiki_data = www-data:www-data
-gitlab_config = gitlab:gitlab
-git_repo = git
+  <!-- Footer -->
+  <footer>
+    <address id="about" class="vcard body">
+      Blog powered by <a href="http://getpelican.com/">Pelican</a>, 
+      which takes great advantage of <a href="http://python.org">Python</a>.
+      Theme <a href="https://github.com/quack1/notebook/">Notebook</a> by <a href="https://twitter.com/_Quack1">@Quack1</a>.
+    </address>
+  </footer>
 
-[FileList]
-vim_config = /root/.vimrc:/root/.vim_runtime
-system_config = /etc/nginx:/etc/apache2:/etc/phpmyadmin:/etc/mysql:/etc/exim4
-crontab = /root/crontab
-gitlab_config = /home/gitlab/gitlab/config/database.yml:/home/gitlab/gitlab/config/gitlab.yml
-backup_script = /etc/cron.daily/host-backup
-git_config = /root/.gitconfig:/root/.gitignore
-dokuwiki_data = /var/www/wiki/data/pages:/var/www/wiki/data/meta:/var/www/wiki/data/attic:/var/www/wiki/conf
-
-[General]
-</pre></div>
-
-
-<h1>备份[FileList]中的文件时，是否排除版本控制系统的文件，参考man tar。</h1>
-<div class="highlight"><pre>exclude_vcs = 0
-</pre></div>
-
-
-<h1>备份文件名的日期格式，参考python的日期格式。</h1>
-<div class="highlight"><pre>date_format = %Y%m%d%H%M%S
-exclude_pattern = 0
-</pre></div>
-
-
-<h1>备份完毕后是否删除备份文件， 1为删除，0为不删除。</h1>
-<div class="highlight"><pre>remove_after_backup = 1
-</pre></div>
-
-
-<h1>恢复备份文件时，如果目标文件存在则先删除之，1为删除，0为不删除。</h1>
-<div class="highlight"><pre>remove_exist_first = 1
-
-[Repo.Git]
-</pre></div>
-
-
-<h1>不启用Git仓库备份功能</h1>
-<div class="highlight"><pre>root_dir = 0
-
-[DB.Mysql]
-</pre></div>
-
-
-<h1>使用半角冒号(:)分隔的mysql数据库列表</h1>
-<div class="highlight"><pre>db_list = 0
-</pre></div>
-
-
-<h1>Mysql用户名</h1>
-<div class="highlight"><pre>user = 0
-</pre></div>
-
-
-<h1>Mysql密码</h1>
-<div class="highlight"><pre>password = 0
-
-[Backup]
-</pre></div>
-
-
-<h1>设为1则启用dropbox备份，0为不启用。</h1>
-<div class="highlight"><pre>with_dropbox = 0
-</pre></div>
-
-
-<h1>设为1则启用email备份，0为不启用。</h1>
-<div class="highlight"><pre>with_email = 1
-
-[Email]
-</pre></div>
-
-
-<h1>使用半角冒号(:)分隔的邮件列表</h1>
-<div class="highlight"><pre>mail_list = 0
-
-[Dropbox]
-</pre></div>
-
-
-<h1>不要手动填写</h1>
-<div class="highlight"><pre>access_token = 0
-</pre></div>
-
-
-<h1>dropbox的备份文件夹，/为根目录</h1>
-<div class="highlight"><pre>target_dir = /host-backup
-</pre></div>
-
-
-<h1>你的APP_SECRET</h1>
-<div class="highlight"><pre>app_secret = 0
-</pre></div>
-
-
-<h1>你的APP_KEY</h1>
-<div class="highlight"><pre>app_key = 0
-</pre></div>
-
-
-<h1>Dropbox用户名</h1>
-<div class="highlight"><pre>user = 0
-</pre></div>
-
-
-<h1>Dropbox密码，不要手动填写</h1>
-<div class="highlight"><pre>password = 0
-</pre></div>                </article>
-            </aside><!-- /#featured -->
-        <section id="extras" class="body">
-                <div class="blogroll">
-                        <h2>blogroll</h2>
-                        <ul>
-                            <li><a href="http://getpelican.com/">Pelican</a></li>
-                            <li><a href="http://python.org/">Python.org</a></li>
-                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
-                            <li><a href="#">You can modify those links in your config file</a></li>
-                        </ul>
-                </div><!-- /.blogroll -->
-                <div class="social">
-                        <h2>social</h2>
-                        <ul>
-                            <li><a href="http://wuyukk.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
-
-                            <li><a href="#">You can add links in your config file</a></li>
-                            <li><a href="#">Another social link</a></li>
-                        </ul>
-                </div><!-- /.social -->
-        </section><!-- /#extras -->
-
-        <footer id="contentinfo" class="body">
-                <address id="about" class="vcard body">
-                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
-                </address><!-- /#about -->
-
-                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
-        </footer><!-- /#contentinfo -->
 
 </body>
 </html>

@@ -1,148 +1,101 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-        <meta charset="utf-8" />
-        <title>anthony - espruino</title>
-        <link rel="stylesheet" href="http://wuyukk.github.io/theme/css/main.css" />
-        <link href="http://wuyukk.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="anthony Atom Feed" />
+  <meta charset="utf-8">
+  <!-- Site Meta Data -->
+  <title>anthony - espruino</title>
+  <meta name="description" content="">
+  <meta name="author" content="anthony">
 
-        <!--[if IE]>
-            <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-        <![endif]-->
+  <!-- Style Meta Data -->
+  <link rel="stylesheet" href="http://wuyukk.github.io/theme/css/notebook.css" type="text/css" />
+  <link rel="shortcut icon" href="http://wuyukk.github.io/">
+
+  <!-- Feed Meta Data -->
+  <link href="http://wuyukk.github.io/" type="application/atom+xml" rel="alternate" title="anthony ATOM Feed" />
+
+  <!-- Twitter Feed -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="">
+  <meta name="twitter:image" content="http://wuyukk.github.io/">
+
+<meta name="twitter:creator" content="">
+<meta name="twitter:url" content="http://wuyukk.github.io">
+<meta name="twitter:title" content="anthony">
+<meta name="twitter:description" content="">
+
+<!-- Facebook Meta Data -->
+<meta property="og:title" content="anthony" />
+<meta property="og:description" content="" />
+<meta property="og:image" content="" />
+
+<meta name="twitter:creator" content="">
+<meta name="twitter:url" content="http://wuyukk.github.io/category/espruino.html">
+<meta name="twitter:title" content="anthony ~ espruino">
+<meta name="twitter:description" content="Articles de espruino">
+
+<!-- Facebook Meta Data -->
+<meta property="og:title" content="anthony ~ espruino" />
+<meta property="og:description" content="Articles de espruino" />
+<meta property="og:image" content="" />
 </head>
 
-<body id="index" class="home">
-        <header id="banner" class="body">
-                <h1><a href="http://wuyukk.github.io/">anthony </a></h1>
-                <nav><ul>
-                    <li><a href="http://wuyukk.github.io/category/editor.html">editor</a></li>
-                    <li class="active"><a href="http://wuyukk.github.io/category/espruino.html">espruino</a></li>
-                    <li><a href="http://wuyukk.github.io/category/git.html">git</a></li>
-                    <li><a href="http://wuyukk.github.io/category/test.html">test</a></li>
-                    <li><a href="http://wuyukk.github.io/category/yum.html">YUM</a></li>
-                </ul></nav>
-        </header><!-- /#banner -->
+<body>
+  <!-- Sidebar -->
+  <aside>
+    <p><a href="http://wuyukk.github.io"><img id="avatar" src="http://wuyukk.github.io/"></a></p>
+    <h1>anthony</h1>
+    <p></p>
+    <hr>
+    <h2>Social</h2>
+    <ul class="social">
+      <li style="list-style-image : url(http://wuyukk.github.io/theme/images/icons/you can add links in your config file.png);"><a href="#">You can add links in your config file</a></li>
+      <li style="list-style-image : url(http://wuyukk.github.io/theme/images/icons/another social link.png);"><a href="#">Another social link</a></li>
+      <li style="list-style-image : url(http://wuyukk.github.io/theme/images/icons/rss.png);"><a href="http://wuyukk.github.io/" rel="alternate"><i class="icon-bookmark icon-large"></i>Atom feed</a></li>
+    </ul>
+    <h2>Categories</h2>
+    <ul class="navbar">
+      <li><a href="http://wuyukk.github.io/category/editor.html">editor</a></li>
+      <li class="active"><a href="http://wuyukk.github.io/category/espruino.html">espruino</a></li>
+      <li><a href="http://wuyukk.github.io/category/git.html">git</a></li>
+      <li><a href="http://wuyukk.github.io/category/test.html">test</a></li>
+      <li><a href="http://wuyukk.github.io/category/yum.html">YUM</a></li>
+    </ul> 
+  </aside>
 
-            <aside id="featured" class="body">
-                <article>
-                    <h1 class="entry-title"><a href="http://wuyukk.github.io/espruino-build.html">Espruino Build</a></h1>
-<footer class="post-info">
-        <abbr class="published" title="2015-10-13T16:30:00+02:00">
-                Published: Tue 13 October 2015
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="http://wuyukk.github.io/author/anthony.html">anthony</a>
-        </address>
-<p>In <a href="http://wuyukk.github.io/category/espruino.html">espruino</a>.</p>
-
-</footer><!-- /.post-info --><h2>Espruino Build</h2>
-<p>Espruino is easy to build under Linux, and it is possible to build under MacOS with some effort. If you don't have Linux it's much easier to install it in a Virtual Machine. See the heading Building under Windows/MacOS with a VM below for more information.
-for STM32 Boards (incl. Espruino Board)</p>
-<p>The (previously suggested) CodeSourcery GCC compiler is no longer available. We'd suggest you use <a href="https://launchpad.net/gcc-arm-embedded/+download">gcc-arm-embedded</a>.
-now I'm using version <a href="http://forum.espruino.com/conversations/275850/launchpad.net/gcc-arm-embedded/4%C2%AD.8/4.8-2014-q3-update/+download/gcc-arm-%C2%ADnone-eabi-4_8-2014q3-20140805-linux.tar.%C2%ADbz2">4.8.4</a>, why, <a href="http://forum.espruino.com/conversations/275850/#comment12565086">see here</a>.</p>
-<p>Download the compiler, set up your path so you have access to it, and run:</p>
-<p><code>ESPRUINO_1V3=1 RELEASE=1 make</code></p>
-<p>It may complain that there isn't enough <em>space</em> on the chip. This isn't an issue unless you save to flash, but you can fix the error in a few ways:</p>
-<blockquote>
-<p>Disable the check by adding TRAVIS=1
-Change the compile flags from -O3 to -Os in the Makefile
-Knock out some functionality (like USE_GRAPHICS=1) that you don't need in the Makefile
-Try different compilers. codesourcery-2013.05-23-arm-none-eabi provides low binary size for -O3</p>
-</blockquote>
-<p>Note: Espruino boards contain a special bootloader at 0x08000000 (the default address), with the Espruino binary moved on 10240 bytes to <code>0x08002800</code>. To load the Espruino binary onto a board at the correct address, use ESPRUINO_1V3=1 RELEASE=1 make serialflash</p>
-<p>If you want to make a binary that contains the bootloader as well as Espruino (like the ones that the Espruino Web IDE expects to use) use the script scripts/<code>create_espruino_image_1v3.sh</code> which will compile the bootloader and Espruino, and then join them together.</p>
-<p>http://www.espruino.com/Download
-http://www.espruino.com/Serial+Bootloader</p>
-<div class="highlight"><pre>sudo python stm32loader.py -k -p /dev/ttyACM0 -evw
-sudo python stm32loader.py -k -p /dev/ttyACM0 -evw espruino_1v81.26_espruino_1r3.bin
-sudo python scripts/stm32loader.py -a 0x8002800 -ew -k -p /dev/ttyACM0
-</pre></div>
+  <!-- Content -->
+  <article>
+<ol>
+	<li class="post_list"><p class="post_entry">
+		<h2 class="post_title"><a href="http://wuyukk.github.io/espruino-build.html" rel="bookmark" title="Permalink to Espruino Build">Espruino Build</a></h2>
+		<a href="http://wuyukk.github.io/author/anthony.html">@anthony</a>
+		<span> dans </span>
+		<span class="post_category"><a href="http://wuyukk.github.io/category/espruino.html" rel="bookmark" title="Permalink to espruino">[ espruino ]</a></span>
+		<span> le </span>
+		<span class="post_date">Tue 13 October 2015</span>
+	</li>
+	<li class="post_list"><p class="post_entry">
+		<h2 class="post_title"><a href="http://wuyukk.github.io/espruino.html" rel="bookmark" title="Permalink to espruino">espruino</a></h2>
+		<a href="http://wuyukk.github.io/author/anthony.html">@anthony</a>
+		<span> dans </span>
+		<span class="post_category"><a href="http://wuyukk.github.io/category/espruino.html" rel="bookmark" title="Permalink to espruino">[ espruino ]</a></span>
+		<span> le </span>
+		<span class="post_date">Sat 10 October 2015</span>
+	</li>
+</ol>
 
 
-<p>On Windows 'ST Flash Loader Demonstrator'
-On Mac OS / Linux python stm32loader.py -p MySerialPort -evw espruino_for_your_device.bin</p>
-<p>For Espruino Boards add <code>-k</code> to the command-line. This will make flashing more reliable.</p>
-<h2>Advanced Reflashing</h2>
-<p>If you're developing and you want to completely rewrite the bootloader, you can wire up the Espruino board to a USB-TTL convertor as follows:
-USB-TTL     Name    Espruino Pin
-5V  5V  VBAT
-GND     GND     GND
-TX  USART1_RX   A10
-RX  USART1_TX   A9
--   BOOT0 - 3.3V    BOOT0
-GND     BOOT1 - 0V  B2</p>
-<p>Note: BOOT0 is in a group of two pins (RST and BOOT0) in the middle of the top edge of the board.</p>                </article>
-            </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h1>Other articles</h1>
-                    <hr />
-                    <ol id="posts-list" class="hfeed">
+  </article>
 
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="http://wuyukk.github.io/espruino.html" rel="bookmark"
-                           title="Permalink to espruino">espruino</a></h1>
-                </header>
+  <!-- Footer -->
+  <footer>
+    <address id="about" class="vcard body">
+      Blog powered by <a href="http://getpelican.com/">Pelican</a>, 
+      which takes great advantage of <a href="http://python.org">Python</a>.
+      Theme <a href="https://github.com/quack1/notebook/">Notebook</a> by <a href="https://twitter.com/_Quack1">@Quack1</a>.
+    </address>
+  </footer>
 
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2015-10-10T22:00:00+02:00">
-                Published: Sat 10 October 2015
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="http://wuyukk.github.io/author/anthony.html">anthony</a>
-        </address>
-<p>In <a href="http://wuyukk.github.io/category/espruino.html">espruino</a>.</p>
-
-</footer><!-- /.post-info -->                <h1>Espruino JavaScript for Microcontrollers</h1>
-<p><pre>
-<strong><em>_</em>                 _
-|   </strong>|<strong><em> </em></strong> <strong><em> _ </em>|_|</strong><em> <strong><em>
-|   </em><em>|</em> -| . |  _| | | |   | . |
-|</strong><strong><em>|</em></strong>|  </em>|<em>| |<strong><em>|</em>|<em>|</em>|</strong></em>|
-|_|    <br />
-</pre>
-http://www.espruino.com &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="https://gitter.im/espruino/Espruino?utm_source=badge&amp;utm_medium=badge&amp;utm_campaign=pr-badge&amp;utm_content=badge"><img alt="Join the chat at https://gitter.im/espruino/Espruino" src="https://badges.gitter.im/Join%20Chat.svg" /></a></p>
-<h2>About</h2>
-<p>Espruino is a JavaScript interpreter for microcontrollers. It is designed to fit into devices with as little as 128kB Flash and 8kB RAM.</p>
-<p>Please support Espruino by <a href="http://www.espruino.com/Order">ordering one of our official boards</a>.</p>
-<h2>Documentation</h2>
-<p>If ...</p>
-                <a class="readmore" href="http://wuyukk.github.io/espruino.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-                </ol><!-- /#posts-list -->
-                </section><!-- /#content -->
-        <section id="extras" class="body">
-                <div class="blogroll">
-                        <h2>blogroll</h2>
-                        <ul>
-                            <li><a href="http://getpelican.com/">Pelican</a></li>
-                            <li><a href="http://python.org/">Python.org</a></li>
-                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
-                            <li><a href="#">You can modify those links in your config file</a></li>
-                        </ul>
-                </div><!-- /.blogroll -->
-                <div class="social">
-                        <h2>social</h2>
-                        <ul>
-                            <li><a href="http://wuyukk.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
-
-                            <li><a href="#">You can add links in your config file</a></li>
-                            <li><a href="#">Another social link</a></li>
-                        </ul>
-                </div><!-- /.social -->
-        </section><!-- /#extras -->
-
-        <footer id="contentinfo" class="body">
-                <address id="about" class="vcard body">
-                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
-                </address><!-- /#about -->
-
-                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
-        </footer><!-- /#contentinfo -->
 
 </body>
 </html>
