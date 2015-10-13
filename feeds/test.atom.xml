@@ -7,15 +7,15 @@
 &lt;li&gt;代码仓库: &lt;a href="https://github.com/wilbur-ma/host-backup"&gt;Github&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;下载地址: &lt;a href="https://github.com/wilbur-ma/host-backup/archive/master.zip"&gt;最新版本&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2&gt;介绍&lt;/h2&gt;
-&lt;h3&gt;更新历史&lt;/h3&gt;
+&lt;h2 id=""&gt;介绍&lt;/h2&gt;
+&lt;h3 id="_1"&gt;更新历史&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;0.0.4    2013.11.13    发送邮件时，会把备份时产生的错误输出作为邮件正文一起发送&lt;/li&gt;
 &lt;li&gt;0.0.3    2012.11.27    增加dropbox支持(需要&lt;a href="https://www.dropbox.com/developers/reference/sdk"&gt;dropbox sdk&lt;/a&gt;)&lt;/li&gt;
 &lt;li&gt;0.0.2    2012.11.02    增加发送邮件功能&lt;/li&gt;
 &lt;li&gt;0.0.1    2012.10.26    第一个测试版本&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3&gt;依赖的软件&lt;/h3&gt;
+&lt;h3 id="_1_2"&gt;依赖的软件&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;python2.6或python2.7&lt;/li&gt;
 &lt;li&gt;gnu tar - 文件打包&lt;/li&gt;
@@ -23,38 +23,36 @@
 &lt;li&gt;exim4, mutt - 通过邮件发送备份数据&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://www.dropbox.com/developers/reference/sdk"&gt;dropbox sdk&lt;/a&gt; (如果使用dropbox备份功能)&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3&gt;文件列表&lt;/h3&gt;
+&lt;h3 id="_1_2_3"&gt;文件列表&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href="#backup-config.ini"&gt;backup-config.ini&lt;/a&gt; 备份和恢复的配置文件&lt;/li&gt;
 &lt;li&gt;host-admin.py 用于备份和恢复&lt;/li&gt;
 &lt;li&gt;aes.py aes加密和解密，取自&lt;a href="http://code.google.com/p/slowaes/"&gt;slowaes工程&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3&gt;注意事项&lt;/h3&gt;
+&lt;h3 id="_1_2_3_4"&gt;注意事项&lt;/h3&gt;
 &lt;ol&gt;
 &lt;li&gt;在debian上，备份/etc/mysql时必须同时备份mysql数据库中的mysql，否则恢复后会有&lt;code&gt;Stopping MySQL database server: mysqld failed&lt;/code&gt;错误，解决方法可以参考&lt;a href="/note/mysql-problems.html#a1acdbd356b3fe3bcf56df30de626dd0"&gt;这里&lt;/a&gt;&lt;ol&gt;
 &lt;li&gt;如果用exim4发送邮件时因为附件太大而发送失败，可以在/etc/exim4/update-exim4.conf.conf添加如下一行&lt;code&gt;MESSAGE_SIZE_LIMIT=1000m&lt;/code&gt;，将1000m改为你需要的大小限制即可。&lt;/li&gt;
 &lt;/ol&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;h3&gt;使用说明&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;1.  安装依赖的软件。
+&lt;h3 id="_1_2_3_4_5"&gt;使用说明&lt;/h3&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;1.  安装依赖的软件。
 2.  为脚本添加执行权限`chmod +x host-admin.py`。
 3.  根据需要修改配置文件。
 4.  进行备份或恢复: 
 * `./host-admin.py -c daily-backup.ini -b` 使用daily-backup.ini中的配置进行备份
 * `./host-admin.py -c daily-backup.ini -f host-backup.tar -r`使用daily-backup.ini中的配置和host-backup.tar中的数据进行恢复。
 &lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;h2&gt;配置文件说明&lt;/h2&gt;
-&lt;h3&gt;backup-config.ini&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;1.  第一次使用需要按提示设置mysql密码，加密后存于配置文件中。
+&lt;h2 id="_1_2_3_4_5_6"&gt;配置文件说明&lt;/h2&gt;
+&lt;h3 id="backup-configini"&gt;backup-config.ini&lt;/h3&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;1.  第一次使用需要按提示设置mysql密码，加密后存于配置文件中。
 2.  如果想使用新的Mysql用户或密码，只需将DB.Mysql里的User和Passwor的值设为0。
 3.  FileList里的路径必须为绝对路径，多个路径必须使用分号`:`隔开。
 4.  OwnerList使用chown修改FileList中对应项的用户归属，其中项的名称必须和FileList中的名称一致。按照下面的配置文件恢复文件后，将FileList中Dokuwiki_Data项所包含的所有路径的归属用户和归属组改为www-data，即`chown www-data:www-data %path%`。
-5.  将Mail_List设为0可禁用邮件发送功能。多个邮件地址可用分号&amp;quot;:&amp;quot;隔开。
+5.  将Mail_List设为0可禁用邮件发送功能。多个邮件地址可用分号":"隔开。
 6.  Exclude_VCS使用gnu tar的`--exclude-vcs`选项实现。
-7.  Exclude_Pattern使用gnu tar的`--exclude`选项实现，多个pattern使用分号&amp;quot;:&amp;quot;隔开，例如剔除后缀为tmp的文件，/var/blog/tmp目录，名为conf.d的目录和所有隐藏文件(文件夹)，可以使用如下pattern: `*.tmp:/var/blog/tmp:conf.d:\.*`，单个Pattern的详细说明请参考[GNU Tar文档](http://www.gnu.org/software/tar/manual/html_node/exclude.html)。
+7.  Exclude_Pattern使用gnu tar的`--exclude`选项实现，多个pattern使用分号":"隔开，例如剔除后缀为tmp的文件，/var/blog/tmp目录，名为conf.d的目录和所有隐藏文件(文件夹)，可以使用如下pattern: `*.tmp:/var/blog/tmp:conf.d:\.*`，单个Pattern的详细说明请参考[GNU Tar文档](http://www.gnu.org/software/tar/manual/html_node/exclude.html)。
 
 :::ini
 [OwnerList]
@@ -73,99 +71,65 @@ dokuwiki_data = /var/www/wiki/data/pages:/var/www/wiki/data/meta:/var/www/wiki/d
 
 [General]
 &lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;h1&gt;备份[FileList]中的文件时，是否排除版本控制系统的文件，参考man tar。&lt;/h1&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;exclude_vcs = 0
+&lt;h1 id="filelistman-tar"&gt;备份[FileList]中的文件时，是否排除版本控制系统的文件，参考man tar。&lt;/h1&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;exclude_vcs = 0
 &lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;h1&gt;备份文件名的日期格式，参考python的日期格式。&lt;/h1&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;date_format = %Y%m%d%H%M%S
+&lt;h1 id="python"&gt;备份文件名的日期格式，参考python的日期格式。&lt;/h1&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;date_format = %Y%m%d%H%M%S
 exclude_pattern = 0
 &lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;h1&gt;备份完毕后是否删除备份文件， 1为删除，0为不删除。&lt;/h1&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;remove_after_backup = 1
+&lt;h1 id="10"&gt;备份完毕后是否删除备份文件， 1为删除，0为不删除。&lt;/h1&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;remove_after_backup = 1
 &lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;h1&gt;恢复备份文件时，如果目标文件存在则先删除之，1为删除，0为不删除。&lt;/h1&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;remove_exist_first = 1
+&lt;h1 id="10_1"&gt;恢复备份文件时，如果目标文件存在则先删除之，1为删除，0为不删除。&lt;/h1&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;remove_exist_first = 1
 
 [Repo.Git]
 &lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;h1&gt;不启用Git仓库备份功能&lt;/h1&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;root_dir = 0
+&lt;h1 id="git"&gt;不启用Git仓库备份功能&lt;/h1&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;root_dir = 0
 
 [DB.Mysql]
 &lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;h1&gt;使用半角冒号(:)分隔的mysql数据库列表&lt;/h1&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;db_list = 0
+&lt;h1 id="mysql"&gt;使用半角冒号(:)分隔的mysql数据库列表&lt;/h1&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;db_list = 0
 &lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;h1&gt;Mysql用户名&lt;/h1&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;user = 0
+&lt;h1 id="mysql_1"&gt;Mysql用户名&lt;/h1&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;user = 0
 &lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;h1&gt;Mysql密码&lt;/h1&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;password = 0
+&lt;h1 id="mysql_1_2"&gt;Mysql密码&lt;/h1&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;password = 0
 
 [Backup]
 &lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;h1&gt;设为1则启用dropbox备份，0为不启用。&lt;/h1&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;with_dropbox = 0
+&lt;h1 id="1dropbox0"&gt;设为1则启用dropbox备份，0为不启用。&lt;/h1&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;with_dropbox = 0
 &lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;h1&gt;设为1则启用email备份，0为不启用。&lt;/h1&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;with_email = 1
+&lt;h1 id="1email0"&gt;设为1则启用email备份，0为不启用。&lt;/h1&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;with_email = 1
 
 [Email]
 &lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;h1&gt;使用半角冒号(:)分隔的邮件列表&lt;/h1&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;mail_list = 0
+&lt;h1 id="_1_2_3_4_5_6_7"&gt;使用半角冒号(:)分隔的邮件列表&lt;/h1&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;mail_list = 0
 
 [Dropbox]
 &lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;h1&gt;不要手动填写&lt;/h1&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;access_token = 0
+&lt;h1 id="_1_2_3_4_5_6_7_8"&gt;不要手动填写&lt;/h1&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;access_token = 0
 &lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;h1&gt;dropbox的备份文件夹，/为根目录&lt;/h1&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;target_dir = /host-backup
+&lt;h1 id="dropbox"&gt;dropbox的备份文件夹，/为根目录&lt;/h1&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;target_dir = /host-backup
 &lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;h1&gt;你的APP_SECRET&lt;/h1&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;app_secret = 0
+&lt;h1 id="app_secret"&gt;你的APP_SECRET&lt;/h1&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;app_secret = 0
 &lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;h1&gt;你的APP_KEY&lt;/h1&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;app_key = 0
+&lt;h1 id="app_key"&gt;你的APP_KEY&lt;/h1&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;app_key = 0
 &lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;h1&gt;Dropbox用户名&lt;/h1&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;user = 0
+&lt;h1 id="dropbox_1"&gt;Dropbox用户名&lt;/h1&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;user = 0
 &lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;h1&gt;Dropbox密码，不要手动填写&lt;/h1&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;password = 0
+&lt;h1 id="dropbox_1_2"&gt;Dropbox密码，不要手动填写&lt;/h1&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;password = 0
 &lt;/pre&gt;&lt;/div&gt;</summary><category term="python"></category><category term="backup"></category></entry></feed>

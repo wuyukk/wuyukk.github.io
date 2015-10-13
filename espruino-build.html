@@ -58,7 +58,7 @@
             </div>
             <div id="niu2-left-container" class="col-md-6 col-md-offset-2 with-right-border">
                 <div id="niu2-main-content">
-                    <h2>Espruino Build</h2>
+                    <h2 id="espruino-build">Espruino Build</h2>
 <p>Espruino is easy to build under Linux, and it is possible to build under MacOS with some effort. If you don't have Linux it's much easier to install it in a Virtual Machine. See the heading Building under Windows/MacOS with a VM below for more information.
 for STM32 Boards (incl. Espruino Board)</p>
 <p>The (previously suggested) CodeSourcery GCC compiler is no longer available. We'd suggest you use <a href="https://launchpad.net/gcc-arm-embedded/+download">gcc-arm-embedded</a>.
@@ -76,16 +76,14 @@ Try different compilers. codesourcery-2013.05-23-arm-none-eabi provides low bina
 <p>If you want to make a binary that contains the bootloader as well as Espruino (like the ones that the Espruino Web IDE expects to use) use the script scripts/<code>create_espruino_image_1v3.sh</code> which will compile the bootloader and Espruino, and then join them together.</p>
 <p>http://www.espruino.com/Download
 http://www.espruino.com/Serial+Bootloader</p>
-<div class="highlight"><pre>sudo python stm32loader.py -k -p /dev/ttyACM0 -evw
+<div class="codehilite"><pre>sudo python stm32loader.py -k -p /dev/ttyACM0 -evw
 sudo python stm32loader.py -k -p /dev/ttyACM0 -evw espruino_1v81.26_espruino_1r3.bin
 sudo python scripts/stm32loader.py -a 0x8002800 -ew -k -p /dev/ttyACM0
 </pre></div>
-
-
 <p>On Windows 'ST Flash Loader Demonstrator'
 On Mac OS / Linux python stm32loader.py -p MySerialPort -evw espruino_for_your_device.bin</p>
 <p>For Espruino Boards add <code>-k</code> to the command-line. This will make flashing more reliable.</p>
-<h2>Advanced Reflashing</h2>
+<h2 id="advanced-reflashing">Advanced Reflashing</h2>
 <p>If you're developing and you want to completely rewrite the bootloader, you can wire up the Espruino board to a USB-TTL convertor as follows:
 USB-TTL     Name    Espruino Pin
 5V  5V  VBAT
@@ -115,7 +113,7 @@ GND     BOOT1 - 0V  B2</p>
                     </div>
                     <ul id="niu2-sidebar-toc-list">
                         <li><a href="#content-heading">Espruino Build</a></li>
-                        
+                        <li><a href='#espruino-build'>Espruino Build</a></li><li><a href='#advanced-reflashing'>Advanced Reflashing</a></li>
                     </ul>
                 </div>
             </div>
