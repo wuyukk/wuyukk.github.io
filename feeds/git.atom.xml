@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>anthony</title><link href="http://wuyukk.github.io/" rel="alternate"></link><link href="http://wuyukk.github.io/feeds/git.atom.xml" rel="self"></link><id>http://wuyukk.github.io/</id><updated>2015-10-12T00:09:00+02:00</updated><entry><title>git config pretty-formats</title><link href="http://wuyukk.github.io/git-config-pretty-formats.html" rel="alternate"></link><updated>2015-10-12T00:09:00+02:00</updated><author><name>anthony</name></author><id>tag:wuyukk.github.io,2015-10-12:git-config-pretty-formats.html</id><summary type="html">&lt;h3&gt;colorful output&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;git config --global color.status auto&lt;/li&gt;
+&lt;li&gt;git config --global color.diff auto&lt;/li&gt;
+&lt;li&gt;git config --global color.branch auto&lt;/li&gt;
+&lt;li&gt;git config --global color.interactive auto&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;output format&lt;/h3&gt;
+&lt;p&gt;useage: &lt;code&gt;git lg&lt;/code&gt; &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;git config --global alias.lg "log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)&amp;lt;%an&amp;gt;%Creset' --abbrev-commit --date=relative"&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;for more info, please have a look at &lt;a href="http://git-scm.com/docs/pretty-formats" title="look up all the command"&gt;&lt;strong&gt;git-scm&lt;/strong&gt;&lt;/a&gt;.&lt;/p&gt;</summary></entry></feed>

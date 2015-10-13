@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>anthony - anthony</title>
+        <link rel="stylesheet" href="http://wuyukk.github.io/theme/css/main.css" />
+        <link href="http://wuyukk.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="anthony Atom Feed" />
+
+        <!--[if IE]>
+            <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="http://wuyukk.github.io/">anthony </a></h1>
+                <nav><ul>
+                    <li><a href="http://wuyukk.github.io/category/editor.html">editor</a></li>
+                    <li><a href="http://wuyukk.github.io/category/espruino.html">espruino</a></li>
+                    <li><a href="http://wuyukk.github.io/category/git.html">git</a></li>
+                    <li><a href="http://wuyukk.github.io/category/test.html">test</a></li>
+                    <li><a href="http://wuyukk.github.io/category/yum.html">YUM</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+
+            <aside id="featured" class="body">
+                <article>
+                    <h1 class="entry-title"><a href="http://wuyukk.github.io/espruino-build.html">Espruino Build</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2015-10-13T16:30:00+02:00">
+                Published: Tue 13 October 2015
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="http://wuyukk.github.io/author/anthony.html">anthony</a>
+        </address>
+<p>In <a href="http://wuyukk.github.io/category/espruino.html">espruino</a>.</p>
+
+</footer><!-- /.post-info --><h2>Espruino Build</h2>
+<p>Espruino is easy to build under Linux, and it is possible to build under MacOS with some effort. If you don't have Linux it's much easier to install it in a Virtual Machine. See the heading Building under Windows/MacOS with a VM below for more information.
+for STM32 Boards (incl. Espruino Board)</p>
+<p>The (previously suggested) CodeSourcery GCC compiler is no longer available. We'd suggest you use <a href="https://launchpad.net/gcc-arm-embedded/+download">gcc-arm-embedded</a>.
+now I'm using version <a href="http://forum.espruino.com/conversations/275850/launchpad.net/gcc-arm-embedded/4%C2%AD.8/4.8-2014-q3-update/+download/gcc-arm-%C2%ADnone-eabi-4_8-2014q3-20140805-linux.tar.%C2%ADbz2">4.8.4</a>, why, <a href="http://forum.espruino.com/conversations/275850/#comment12565086">see here</a>.</p>
+<p>Download the compiler, set up your path so you have access to it, and run:</p>
+<p><code>ESPRUINO_1V3=1 RELEASE=1 make</code></p>
+<p>It may complain that there isn't enough <em>space</em> on the chip. This isn't an issue unless you save to flash, but you can fix the error in a few ways:</p>
+<blockquote>
+<p>Disable the check by adding TRAVIS=1
+Change the compile flags from -O3 to -Os in the Makefile
+Knock out some functionality (like USE_GRAPHICS=1) that you don't need in the Makefile
+Try different compilers. codesourcery-2013.05-23-arm-none-eabi provides low binary size for -O3</p>
+</blockquote>
+<p>Note: Espruino boards contain a special bootloader at 0x08000000 (the default address), with the Espruino binary moved on 10240 bytes to <code>0x08002800</code>. To load the Espruino binary onto a board at the correct address, use ESPRUINO_1V3=1 RELEASE=1 make serialflash</p>
+<p>If you want to make a binary that contains the bootloader as well as Espruino (like the ones that the Espruino Web IDE expects to use) use the script scripts/<code>create_espruino_image_1v3.sh</code> which will compile the bootloader and Espruino, and then join them together.</p>
+<p>http://www.espruino.com/Download
+http://www.espruino.com/Serial+Bootloader</p>
+<div class="highlight"><pre>sudo python stm32loader.py -k -p /dev/ttyACM0 -evw
+sudo python stm32loader.py -k -p /dev/ttyACM0 -evw espruino_1v81.26_espruino_1r3.bin
+sudo python scripts/stm32loader.py -a 0x8002800 -ew -k -p /dev/ttyACM0
+</pre></div>
+
+
+<p>On Windows 'ST Flash Loader Demonstrator'
+On Mac OS / Linux python stm32loader.py -p MySerialPort -evw espruino_for_your_device.bin</p>
+<p>For Espruino Boards add <code>-k</code> to the command-line. This will make flashing more reliable.</p>
+<h2>Advanced Reflashing</h2>
+<p>If you're developing and you want to completely rewrite the bootloader, you can wire up the Espruino board to a USB-TTL convertor as follows:
+USB-TTL     Name    Espruino Pin
+5V  5V  VBAT
+GND     GND     GND
+TX  USART1_RX   A10
+RX  USART1_TX   A9
+-   BOOT0 - 3.3V    BOOT0
+GND     BOOT1 - 0V  B2</p>
+<p>Note: BOOT0 is in a group of two pins (RST and BOOT0) in the middle of the top edge of the board.</p>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h1>Other articles</h1>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="http://wuyukk.github.io/git-config-pretty-formats.html" rel="bookmark"
+                           title="Permalink to git config pretty-formats">git config pretty-formats</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2015-10-12T00:09:00+02:00">
+                Published: Mon 12 October 2015
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="http://wuyukk.github.io/author/anthony.html">anthony</a>
+        </address>
+<p>In <a href="http://wuyukk.github.io/category/git.html">git</a>.</p>
+
+</footer><!-- /.post-info -->                <h3>colorful output</h3>
+<ul>
+<li>git config --global color.status auto</li>
+<li>git config --global color.diff auto</li>
+<li>git config --global color.branch auto</li>
+<li>git config --global color.interactive auto</li>
+</ul>
+<h3>output format</h3>
+<p>useage: <code>git lg</code> </p>
+<ul>
+<li>git config --global alias.lg "log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr ...</li></ul>
+                <a class="readmore" href="http://wuyukk.github.io/git-config-pretty-formats.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="http://wuyukk.github.io/espruino.html" rel="bookmark"
+                           title="Permalink to espruino">espruino</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2015-10-10T22:00:00+02:00">
+                Published: Sat 10 October 2015
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="http://wuyukk.github.io/author/anthony.html">anthony</a>
+        </address>
+<p>In <a href="http://wuyukk.github.io/category/espruino.html">espruino</a>.</p>
+
+</footer><!-- /.post-info -->                <h1>Espruino JavaScript for Microcontrollers</h1>
+<p><pre>
+<strong><em>_</em>                 _
+|   </strong>|<strong><em> </em></strong> <strong><em> _ </em>|_|</strong><em> <strong><em>
+|   </em><em>|</em> -| . |  _| | | |   | . |
+|</strong><strong><em>|</em></strong>|  </em>|<em>| |<strong><em>|</em>|<em>|</em>|</strong></em>|
+|_|    <br />
+</pre>
+http://www.espruino.com &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="https://gitter.im/espruino/Espruino?utm_source=badge&amp;utm_medium=badge&amp;utm_campaign=pr-badge&amp;utm_content=badge"><img alt="Join the chat at https://gitter.im/espruino/Espruino" src="https://badges.gitter.im/Join%20Chat.svg" /></a></p>
+<h2>About</h2>
+<p>Espruino is a JavaScript interpreter for microcontrollers. It is designed to fit into devices with as little as 128kB Flash and 8kB RAM.</p>
+<p>Please support Espruino by <a href="http://www.espruino.com/Order">ordering one of our official boards</a>.</p>
+<h2>Documentation</h2>
+<p>If ...</p>
+                <a class="readmore" href="http://wuyukk.github.io/espruino.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="http://wuyukk.github.io/vim-config.html" rel="bookmark"
+                           title="Permalink to VIM Config">VIM Config</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2015-10-10T22:00:00+02:00">
+                Published: Sat 10 October 2015
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="http://wuyukk.github.io/author/anthony.html">anthony</a>
+        </address>
+<p>In <a href="http://wuyukk.github.io/category/editor.html">editor</a>.</p>
+
+</footer><!-- /.post-info -->                <ul>
+<li>
+<p>set nu         // 这是设置显示行号</p>
+</li>
+<li>
+<p>set  showmode   //设置在命令行界面最下面显示当前模式等。</p>
+</li>
+<li>
+<p>set   ruler     // 在右下角显示光标所在的行数等信息</p>
+</li>
+<li>
+<p>set autoindent   // 设置每次单击Enter键后，光标移动到下一行时与上一行的起始字符对齐</p>
+</li>
+<li>
+<p>syntax on    // 即设置语法检测，当编辑C或者Shell脚本时，关键字会用特殊颜色显示</p>
+</li>
+</ul>
+<hr />
+                <a class="readmore" href="http://wuyukk.github.io/vim-config.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="http://wuyukk.github.io/yum-tricks.html" rel="bookmark"
+                           title="Permalink to yum tricks">yum tricks</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2015-10-10T21:46:00+02:00">
+                Published: Sat 10 October 2015
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="http://wuyukk.github.io/author/anthony.html">anthony</a>
+        </address>
+<p>In <a href="http://wuyukk.github.io/category/yum.html">YUM</a>.</p>
+
+</footer><!-- /.post-info -->                <h1>Yum Tricks and Tips</h1>
+<p>Note: These tricks are only available on SLF5 and newer releases. They require yum 3.2.22 or newer.</p>
+<ul>
+<li>yum provides (feature)
+Is used to find out what package provides some feature.
+Example: yum provides zip
+yum provides "<em>/(file)"
+Is used to find out what package ...</em></li></ul>
+                <a class="readmore" href="http://wuyukk.github.io/yum-tricks.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="http://wuyukk.github.io/markdown.html" rel="bookmark"
+                           title="Permalink to Markdown">Markdown</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2015-10-10T00:00:00+02:00">
+                Published: Sat 10 October 2015
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="http://wuyukk.github.io/author/anthony.html">anthony</a>
+        </address>
+<p>In <a href="http://wuyukk.github.io/category/editor.html">editor</a>.</p>
+
+</footer><!-- /.post-info -->                <p>[Markdown was created to be easy to read, easy to write, and still readable in plain text format.]</p>
+                <a class="readmore" href="http://wuyukk.github.io/markdown.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="http://wuyukk.github.io/host-backupwang-zhan-bei-fen-jiao-ben.html" rel="bookmark"
+                           title="Permalink to Host Backup网站备份脚本">Host Backup网站备份脚本</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2013-08-08T12:14:00+02:00">
+                Published: Thu 08 August 2013
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="http://wuyukk.github.io/author/anthony.html">anthony</a>
+        </address>
+<p>In <a href="http://wuyukk.github.io/category/test.html">test</a>.</p>
+<p>tags: <a href="http://wuyukk.github.io/tag/python.html">python</a> <a href="http://wuyukk.github.io/tag/backup.html">backup</a> </p>
+</footer><!-- /.post-info -->                <p>使用python脚本进行网站备份和恢复，可以通过配置文件自定义备份选项。仅支持linux系统和mysql数据库，在debian6上测试和使用。</p>
+<ul>
+<li>当前版本: 0.0.4</li>
+<li>最后更新: 2013.11.13</li>
+<li>许可协议: <a href="http://www.apache.org/licenses/LICENSE-2.0.html">Apache License, Version 2.0</a></li>
+<li>代码仓库: <a href="https://github.com/wilbur-ma/host-backup">Github</a></li>
+<li>下载地址: <a href="https://github.com/wilbur-ma/host-backup/archive/master.zip">最新版本</a></li>
+</ul>
+<h2>介绍</h2>
+<h3>更新历史</h3>
+<ul>
+<li>0.0.4    2013.11.13    发送邮件时，会把备份时产生的错误输出作为邮件正文一起发送</li>
+<li>0.0.3    2012.11.27    增加dropbox支持(需要<a href="https://www.dropbox.com/developers/reference/sdk">dropbox sdk</a>)</li>
+<li>0.0.2    2012.11.02    增加发送邮件功能</li>
+<li>0 ...</li></ul>
+                <a class="readmore" href="http://wuyukk.github.io/host-backupwang-zhan-bei-fen-jiao-ben.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+                </ol><!-- /#posts-list -->
+                </section><!-- /#content -->
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>blogroll</h2>
+                        <ul>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                            <li><a href="http://python.org/">Python.org</a></li>
+                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+                            <li><a href="http://wuyukk.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

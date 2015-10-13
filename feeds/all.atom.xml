@@ -1,0 +1,388 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>anthony</title><link href="http://wuyukk.github.io/" rel="alternate"></link><link href="http://wuyukk.github.io/feeds/all.atom.xml" rel="self"></link><id>http://wuyukk.github.io/</id><updated>2015-10-13T16:30:00+02:00</updated><entry><title>Espruino Build</title><link href="http://wuyukk.github.io/espruino-build.html" rel="alternate"></link><updated>2015-10-13T16:30:00+02:00</updated><author><name>anthony</name></author><id>tag:wuyukk.github.io,2015-10-13:espruino-build.html</id><summary type="html">&lt;h2&gt;Espruino Build&lt;/h2&gt;
+&lt;p&gt;Espruino is easy to build under Linux, and it is possible to build under MacOS with some effort. If you don't have Linux it's much easier to install it in a Virtual Machine. See the heading Building under Windows/MacOS with a VM below for more information.
+for STM32 Boards (incl. Espruino Board)&lt;/p&gt;
+&lt;p&gt;The (previously suggested) CodeSourcery GCC compiler is no longer available. We'd suggest you use &lt;a href="https://launchpad.net/gcc-arm-embedded/+download"&gt;gcc-arm-embedded&lt;/a&gt;.
+now I'm using version &lt;a href="http://forum.espruino.com/conversations/275850/launchpad.net/gcc-arm-embedded/4%C2%AD.8/4.8-2014-q3-update/+download/gcc-arm-%C2%ADnone-eabi-4_8-2014q3-20140805-linux.tar.%C2%ADbz2"&gt;4.8.4&lt;/a&gt;, why, &lt;a href="http://forum.espruino.com/conversations/275850/#comment12565086"&gt;see here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Download the compiler, set up your path so you have access to it, and run:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;ESPRUINO_1V3=1 RELEASE=1 make&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;It may complain that there isn't enough &lt;em&gt;space&lt;/em&gt; on the chip. This isn't an issue unless you save to flash, but you can fix the error in a few ways:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Disable the check by adding TRAVIS=1
+Change the compile flags from -O3 to -Os in the Makefile
+Knock out some functionality (like USE_GRAPHICS=1) that you don't need in the Makefile
+Try different compilers. codesourcery-2013.05-23-arm-none-eabi provides low binary size for -O3&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Note: Espruino boards contain a special bootloader at 0x08000000 (the default address), with the Espruino binary moved on 10240 bytes to &lt;code&gt;0x08002800&lt;/code&gt;. To load the Espruino binary onto a board at the correct address, use ESPRUINO_1V3=1 RELEASE=1 make serialflash&lt;/p&gt;
+&lt;p&gt;If you want to make a binary that contains the bootloader as well as Espruino (like the ones that the Espruino Web IDE expects to use) use the script scripts/&lt;code&gt;create_espruino_image_1v3.sh&lt;/code&gt; which will compile the bootloader and Espruino, and then join them together.&lt;/p&gt;
+&lt;p&gt;http://www.espruino.com/Download
+http://www.espruino.com/Serial+Bootloader&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;sudo python stm32loader.py -k -p /dev/ttyACM0 -evw
+sudo python stm32loader.py -k -p /dev/ttyACM0 -evw espruino_1v81.26_espruino_1r3.bin
+sudo python scripts/stm32loader.py -a 0x8002800 -ew -k -p /dev/ttyACM0
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;On Windows 'ST Flash Loader Demonstrator'
+On Mac OS / Linux python stm32loader.py -p MySerialPort -evw espruino_for_your_device.bin&lt;/p&gt;
+&lt;p&gt;For Espruino Boards add &lt;code&gt;-k&lt;/code&gt; to the command-line. This will make flashing more reliable.&lt;/p&gt;
+&lt;h2&gt;Advanced Reflashing&lt;/h2&gt;
+&lt;p&gt;If you're developing and you want to completely rewrite the bootloader, you can wire up the Espruino board to a USB-TTL convertor as follows:
+USB-TTL     Name    Espruino Pin
+5V  5V  VBAT
+GND     GND     GND
+TX  USART1_RX   A10
+RX  USART1_TX   A9
+-   BOOT0 - 3.3V    BOOT0
+GND     BOOT1 - 0V  B2&lt;/p&gt;
+&lt;p&gt;Note: BOOT0 is in a group of two pins (RST and BOOT0) in the middle of the top edge of the board.&lt;/p&gt;</summary></entry><entry><title>git config pretty-formats</title><link href="http://wuyukk.github.io/git-config-pretty-formats.html" rel="alternate"></link><updated>2015-10-12T00:09:00+02:00</updated><author><name>anthony</name></author><id>tag:wuyukk.github.io,2015-10-12:git-config-pretty-formats.html</id><summary type="html">&lt;h3&gt;colorful output&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;git config --global color.status auto&lt;/li&gt;
+&lt;li&gt;git config --global color.diff auto&lt;/li&gt;
+&lt;li&gt;git config --global color.branch auto&lt;/li&gt;
+&lt;li&gt;git config --global color.interactive auto&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;output format&lt;/h3&gt;
+&lt;p&gt;useage: &lt;code&gt;git lg&lt;/code&gt; &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;git config --global alias.lg "log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)&amp;lt;%an&amp;gt;%Creset' --abbrev-commit --date=relative"&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;for more info, please have a look at &lt;a href="http://git-scm.com/docs/pretty-formats" title="look up all the command"&gt;&lt;strong&gt;git-scm&lt;/strong&gt;&lt;/a&gt;.&lt;/p&gt;</summary></entry><entry><title>espruino</title><link href="http://wuyukk.github.io/espruino.html" rel="alternate"></link><updated>2015-10-10T22:00:00+02:00</updated><author><name>anthony</name></author><id>tag:wuyukk.github.io,2015-10-10:espruino.html</id><summary type="html">&lt;h1&gt;Espruino JavaScript for Microcontrollers&lt;/h1&gt;
+&lt;p&gt;&lt;pre&gt;
+&lt;strong&gt;&lt;em&gt;_&lt;/em&gt;                 _
+|   &lt;/strong&gt;|&lt;strong&gt;&lt;em&gt; &lt;/em&gt;&lt;/strong&gt; &lt;strong&gt;&lt;em&gt; _ &lt;/em&gt;|_|&lt;/strong&gt;&lt;em&gt; &lt;strong&gt;&lt;em&gt;
+|   &lt;/em&gt;&lt;em&gt;|&lt;/em&gt; -| . |  _| | | |   | . |
+|&lt;/strong&gt;&lt;strong&gt;&lt;em&gt;|&lt;/em&gt;&lt;/strong&gt;|  &lt;/em&gt;|&lt;em&gt;| |&lt;strong&gt;&lt;em&gt;|&lt;/em&gt;|&lt;em&gt;|&lt;/em&gt;|&lt;/strong&gt;&lt;/em&gt;|
+|_|    &lt;br /&gt;
+&lt;/pre&gt;
+http://www.espruino.com &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; &lt;a href="https://gitter.im/espruino/Espruino?utm_source=badge&amp;amp;utm_medium=badge&amp;amp;utm_campaign=pr-badge&amp;amp;utm_content=badge"&gt;&lt;img alt="Join the chat at https://gitter.im/espruino/Espruino" src="https://badges.gitter.im/Join%20Chat.svg" /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h2&gt;About&lt;/h2&gt;
+&lt;p&gt;Espruino is a JavaScript interpreter for microcontrollers. It is designed to fit into devices with as little as 128kB Flash and 8kB RAM.&lt;/p&gt;
+&lt;p&gt;Please support Espruino by &lt;a href="http://www.espruino.com/Order"&gt;ordering one of our official boards&lt;/a&gt;.&lt;/p&gt;
+&lt;h2&gt;Documentation&lt;/h2&gt;
+&lt;p&gt;If you have an Espruino board, please read &lt;a href="http://www.espruino.com/Quick+Start"&gt;the Quick Start Guide&lt;/a&gt; first.&lt;/p&gt;
+&lt;p&gt;Browse the &lt;a href="http://www.espruino.com"&gt;Espruino Website&lt;/a&gt; (try using search in the top right), and read the &lt;a href="http://www.espruino.com/FAQ"&gt;FAQ&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;There's also a &lt;a href="http://www.espruino.com/Reference"&gt;Reference&lt;/a&gt; for JavaScript commands as well as &lt;a href="http://www.espruino.com/Tutorials"&gt;Tutorials&lt;/a&gt;. However the documentation on the Espruino website will match the version &lt;a href="http://www.espruino.com/Download"&gt;available for download&lt;/a&gt; but &lt;strong&gt;not&lt;/strong&gt; the latest version on GitHub.&lt;/p&gt;
+&lt;p&gt;Builds for the &lt;a href="http://www.espruino.com/EspruinoBoard"&gt;Espruino Board&lt;/a&gt; and &lt;a href="http://www.espruino.com/Pico"&gt;Pico Board&lt;/a&gt; (built automatically for each Git commit) are &lt;a href="http://www.espruino.com/binaries/git"&gt;available from here&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Other documentation of use is:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="http://forum.espruino.com/"&gt;The Forum&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://www.espruino.com//FAQ"&gt;FAQ&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://www.espruino.com/Troubleshooting"&gt;Troubleshooting&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://www.espruino.com/Performance"&gt;Performance Notes&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://www.espruino.com/Internals"&gt;Implementation Notes&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="README_BuildProcess.md"&gt;Build Process Notes&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="README_Building.md"&gt;Building Espruino&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="libs/README.md"&gt;Making your own libraries&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://www.espruino.com/AdvancedDebug"&gt;Hardware Debugging Notes&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;License&lt;/h2&gt;
+&lt;p&gt;Please see the &lt;a href="LICENSE"&gt;LICENSE&lt;/a&gt; file&lt;/p&gt;
+&lt;h2&gt;Found a Bug?&lt;/h2&gt;
+&lt;p&gt;Please check that it hasn't &lt;a href="https://github.com/espruino/Espruino/issues"&gt;already been found&lt;/a&gt; or &lt;a href="http://www.espruino.com/Forum"&gt;been covered on our forum&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Please &lt;a href="https://github.com/espruino/Espruino/issues"&gt;submit bugs&lt;/a&gt; with clear steps to reproduce them (ideally with a test case for the &lt;code&gt;tests&lt;/code&gt; directory). Please be aware that we're very busy, so if you report something (especially if it doesn't contain a test or a pull request) it may not be fixed for quite some time.&lt;/p&gt;
+&lt;h2&gt;Building&lt;/h2&gt;
+&lt;p&gt;Check out &lt;a href="README_Building.md"&gt;the page on building Espruino&lt;/a&gt;&lt;/p&gt;
+&lt;h2&gt;Testing&lt;/h2&gt;
+&lt;p&gt;There are a bunch of tests in the &lt;code&gt;tests&lt;/code&gt; directory. See &lt;a href="tests/README.md"&gt;&lt;code&gt;tests/README.md&lt;/code&gt;&lt;/a&gt; for examples on how to run them.&lt;/p&gt;
+&lt;h2&gt;Current State&lt;/h2&gt;
+&lt;p&gt;The officially supported boards are the &lt;a href="http://www.espruino.com/EspruinoBoard"&gt;Original Espruino Board&lt;/a&gt; and the  &lt;a href="http://www.espruino.com/Pico"&gt;Espruino Pico Board&lt;/a&gt;. The &lt;a href="http://www.espruino.com/webide"&gt;Web IDE&lt;/a&gt; is able to automatically download and flash the latest version of Espruino for you.&lt;/p&gt;
+&lt;p&gt;While Espruino can run on other boards, we make no money from them and so cannot afford to test, fix or support the firmware on them. We're dependent on the community.&lt;/p&gt;
+&lt;p&gt;You can download binaries from http://www.espruino.com/Download (these aren't the latest, but are more likely to work with your board).&lt;/p&gt;
+&lt;p&gt;If you are a board manufacturer interested in getting your board officially supported, please &lt;a href="http://www.espruino.com/Contact+Us"&gt;Contact Us&lt;/a&gt;.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="http://www.espruino.com/EspruinoBoard"&gt;Original Espruino Board&lt;/a&gt; - great support.&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://www.espruino.com/Pico"&gt;Espruino Pico Board&lt;/a&gt; - great support.&lt;/li&gt;
+&lt;li&gt;Linux - WORKING&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://www.espruino.com/ReferenceSTM32VLDISCOVERY"&gt;STM32VLDISCOVERY&lt;/a&gt; - WORKING - limited memory so some features removed&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://www.espruino.com/ReferenceSTM32F3DISCOVERY"&gt;STM32F3DISCOVERY&lt;/a&gt; - USB BROKEN&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://www.espruino.com/ReferenceSTM32F4DISCOVERY"&gt;STM32F4DISCOVERY&lt;/a&gt; - WORKING&lt;/li&gt;
+&lt;li&gt;STM32F401CDISCOVERY - appears WORKING, but very little testing done&lt;/li&gt;
+&lt;li&gt;STM32F429IDISCOVERY - WORKING over serial (A9/A10). No USB and no LCD support&lt;/li&gt;
+&lt;li&gt;NRF52832 Preview Development Kit - WORKING with limited functionality. Able to interface with Espruino over BLE (send commands from smartphone or computer) or serial as normal (send commands from chrome IDE or terminal).&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://www.espruino.com/ReferenceHYSTM32_24"&gt;HY STM32 2.4"&lt;/a&gt; - WORKING&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://www.espruino.com/ReferenceHYSTM32_28"&gt;HY STM32 2.8"&lt;/a&gt; - WORKING - limited memory so some features removed&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://www.espruino.com/ReferenceHYSTM32_32"&gt;HY STM32 3.2"&lt;/a&gt; - WORKING&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://www.espruino.com/ReferenceOLIMEXINO_STM32"&gt;Olimexino STM32 / Leaflabs Maple&lt;/a&gt; - WORKING - limited memory so some features removed&lt;/li&gt;
+&lt;li&gt;Carambola - WORKING - GPIO via filesystem (no I2C)&lt;/li&gt;
+&lt;li&gt;Raspberry Pi - WORKING - GPIO via filesystem or wiringPi (no I2C)&lt;/li&gt;
+&lt;li&gt;Sony SmartWatch - NOT WORKING - USB VCP support for F2 still needed&lt;/li&gt;
+&lt;li&gt;MBed platforms - have not worked for a while - full hardware wrapper still required&lt;/li&gt;
+&lt;li&gt;LC-TECH STM32F103RBT6 - WORKING, but with some issues (LED inverted logic, BTN needs pullup to work)&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://www.espruino.com/ReferenceNUCLEOF401RE"&gt;ST NUCLEO-F401RE&lt;/a&gt; - WORKING&lt;/li&gt;
+&lt;li&gt;ST NUCLEO-F411RE - WORKING&lt;/li&gt;
+&lt;li&gt;ESP8266 - Alpha - very early in development (GPIO, but not peripherals, no sleep or save)&lt;/li&gt;
+&lt;li&gt;NRF51/52 - Alpha - very early in development (GPIO, but not peripherals, no sleep or save)&lt;/li&gt;
+&lt;li&gt;Arduino (AVR) - NOT POSSIBLE due to the Hardward architecture of AVRs, even though it would fit into an ATMEGA2560. If &lt;code&gt;avr-gcc&lt;/code&gt; ever gains an easy way to emulate Von Neumann architecture then it might be portable, but for now it isn't.&lt;/li&gt;
+&lt;li&gt;Arduino (ARM) - very doable, but no work has been done on this.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Modification&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;Check out &lt;a href="README_BuildProcess.md"&gt;the documentation on the build process&lt;/a&gt; first&lt;/strong&gt; - this should 
+clear up a lot of potential questions about the Espruino architecture.&lt;/p&gt;
+&lt;p&gt;Please see &lt;a href="CONTRIBUTING.md"&gt;CONTRIBUTING.md&lt;/a&gt; for some hints about code style/etc.&lt;/p&gt;
+&lt;p&gt;You can auto-build documentation for all source files - see &lt;a href="doxygen/README.md"&gt;doxygen/README.md&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Any more questions? &lt;a href="http://www.espruino.com/Forum"&gt;ask on the forum.&lt;/a&gt;&lt;/p&gt;
+&lt;h3&gt;Porting to new devices&lt;/h3&gt;
+&lt;p&gt;Currently there are a bunch of different files to modify. Eventually the plan is to fit everything into &lt;code&gt;boards/BOARDNAME.py&lt;/code&gt; and to auto-generate the rest of the config files.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Most build options handled in &lt;code&gt;Makefile&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Extra libraries like USB/LCD/filesystem in &lt;code&gt;Makefile&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;boards/*.py&lt;/code&gt; files describe the CPU, available pins, and connections - so the relevant linker script, headers + docs can be created&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;boards/pins/*.csv&lt;/code&gt; are copies of the 'pin definitions' table in the chip's datasheet. They are read in for STM32 chips by the &lt;code&gt;boards/*.py&lt;/code&gt; files, but they are not required - see &lt;code&gt;boards/MICROBIT.py&lt;/code&gt; for an example.&lt;/li&gt;
+&lt;li&gt;Processor-specific code in &lt;code&gt;targets/ARCH&lt;/code&gt; - eg. &lt;code&gt;targets/stm32&lt;/code&gt;, &lt;code&gt;targets/linux&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Processor-specific libs (like the SDK) in &lt;code&gt;targetlibs/ARCH&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;src/jshardware.h&lt;/code&gt; is effectively a simple abstraction layer for SPI/I2C/etc, which should be implemented in &lt;code&gt;targets/ARCH/jshardware.c&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Adding libraries&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Create &lt;code&gt;jswrap_mylib.c/h&lt;/code&gt; in &lt;code&gt;libs/&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Create library functions (see examples in other jswrap files, also the comments in &lt;code&gt;scripts/common.py&lt;/code&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;See &lt;a href="libs/README.md"&gt;libs/README.md&lt;/a&gt; for a short tutorial on how to add your own libraries.&lt;/p&gt;
+&lt;h2&gt;Using Espruino in your Projects&lt;/h2&gt;
+&lt;p&gt;If you're using Espruino for your own personal projects - go ahead, we hope you have fun - and please let us know what you do with it on http://www.espruino.com/Forum!&lt;/p&gt;
+&lt;p&gt;If you're planning on selling the Espruino software on your own board, please:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Let us know, we might be able to help.&lt;/li&gt;
+&lt;li&gt;Read the terms of the MPLv2 Licence that Espruino is distributed under, and make sure you comply with it&lt;/li&gt;
+&lt;li&gt;MPLv2 dictates that any files that you modify must be made available in source form. New files that you create don't need to be made available (although we'd encourage it!)&lt;/li&gt;
+&lt;li&gt;You won't be able to call your board an 'Espruino' board unless it's agreed with us (we own the trademark)&lt;/li&gt;
+&lt;li&gt;You must explain clearly in your documentation that your device uses Espruino internally&lt;/li&gt;
+&lt;li&gt;Please don't fork Espruino - improvements get very hard to share, and in the long run everyone loses.&lt;/li&gt;
+&lt;li&gt;Please give something back to the project - be it code improvements, documentation or support.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;We spend a &lt;em&gt;lot&lt;/em&gt; of time supporting Espruino on the forums, but can only do
+so because we make money from the sales of Espruino boards. If your users request
+support from us then we have absolutely no obligation to help them. However, we'll
+be a lot more motivated if you're actively helping to improve Espruino for all its
+users (not just your own).&lt;/p&gt;</summary></entry><entry><title>VIM Config</title><link href="http://wuyukk.github.io/vim-config.html" rel="alternate"></link><updated>2015-10-10T22:00:00+02:00</updated><author><name>anthony</name></author><id>tag:wuyukk.github.io,2015-10-10:vim-config.html</id><summary type="html">&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;set nu         // 这是设置显示行号&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;set  showmode   //设置在命令行界面最下面显示当前模式等。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;set   ruler     // 在右下角显示光标所在的行数等信息&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;set autoindent   // 设置每次单击Enter键后，光标移动到下一行时与上一行的起始字符对齐&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;syntax on    // 即设置语法检测，当编辑C或者Shell脚本时，关键字会用特殊颜色显示&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr /&gt;</summary></entry><entry><title>yum tricks</title><link href="http://wuyukk.github.io/yum-tricks.html" rel="alternate"></link><updated>2015-10-10T21:46:00+02:00</updated><author><name>anthony</name></author><id>tag:wuyukk.github.io,2015-10-10:yum-tricks.html</id><summary type="html">&lt;h1&gt;Yum Tricks and Tips&lt;/h1&gt;
+&lt;p&gt;Note: These tricks are only available on SLF5 and newer releases. They require yum 3.2.22 or newer.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;yum provides (feature)
+Is used to find out what package provides some feature.
+Example: yum provides zip
+yum provides "&lt;em&gt;/(file)"
+Is used to find out what package provides a certain file. This is especially useful when you are compiling some code and get an error like "error: libbluetooth.so.2 not found, exiting."
+Example: yum provides "&lt;/em&gt;/libbluetooth.so.2"&lt;/li&gt;
+&lt;li&gt;yum makecache
+Is used to download and make usable all the metadata for the currently enabled yum repos.
+yum --showduplicates (command) (package)
+Doesn't limit packages to their latest versions in the info, list and search commands
+Example: yum --showduplicates list firefox&lt;/li&gt;
+&lt;li&gt;yum downgrade
+Will try and downgrade a package from the version currently installed to the previously highest version (or the specified version). The depsolver will not necessarily work, but if you specify all the packages it should work (and thus. all the simple cases will work). Also this does not work for "installonly" packages, like Kernels. downgrade operates on groups, files, provides and filelists just like the "install" command.
+Examples:
+yum downgrade glibc*
+yum downgrade firefox-3.6.7-3.el5&lt;/li&gt;
+&lt;li&gt;yum reinstall
+Will reinstall the identically versioned package as is currently installed.
+Example: yum reinstall yum
+yum-complete-transaction
+is a program which finds incomplete or aborted yum transactions on a system and attempts to complete them. This program is in the yum-utils package.
+yum install yum-utils
+Example: yum-complete-transaction&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1&gt;Yum Group Tricks&lt;/h1&gt;
+&lt;p&gt;Note: You will see the following "group name" in these tips. You need to keep the quotes on the name when doing this, because some group names have a space in them. So if the group name was KDE Desktop, you would install it by doing yum install "KDE Desktop"&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;yum grouplist
+Is used to list the available groups from all yum repos. Groups are marked as "installed" if all mandatory packages are installed, or if a group doesn't have any mandatory packages then it is installed if any of the optional or default package are installed.&lt;/li&gt;
+&lt;li&gt;yum groupinfo "group name"
+Is used to give the description and package list of a group
+yum groupinstall "group name"
+Is used to install all of the individual packages in a group. This works as if you'd taken each of those package names and put them on the command line for a "yum install" command.&lt;/li&gt;
+&lt;li&gt;yum groupremove "group name"
+It is worth pointing out that packages can be in more than one group, so "groupinstall X Y" followed by "groupremove Y" does not do give you the same result as "groupinstall X".
+yum groupupdate "group name"
+Is just an alias for groupinstall, which will do the right thing because "yum install X" and "yum update X" do the same thing, when X is already installed.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Even More&lt;/p&gt;
+&lt;p&gt;If you want to find even more things that rpm can do, the best place to start is the man page, followed by the Yum Wiki.
+&lt;code&gt;man yum&lt;/code&gt;
+Yum Wiki &lt;/p&gt;</summary></entry><entry><title>Markdown</title><link href="http://wuyukk.github.io/markdown.html" rel="alternate"></link><updated>2015-10-10T00:00:00+02:00</updated><author><name>anthony</name></author><id>tag:wuyukk.github.io,2015-10-10:markdown.html</id><summary type="html">&lt;p&gt;[Markdown was created to be easy to read, easy to write, and still readable in plain text format.]&lt;/p&gt;</summary></entry><entry><title>Host Backup网站备份脚本</title><link href="http://wuyukk.github.io/host-backupwang-zhan-bei-fen-jiao-ben.html" rel="alternate"></link><updated>2013-08-08T12:14:00+02:00</updated><author><name>anthony</name></author><id>tag:wuyukk.github.io,2013-08-08:host-backupwang-zhan-bei-fen-jiao-ben.html</id><summary type="html">&lt;p&gt;使用python脚本进行网站备份和恢复，可以通过配置文件自定义备份选项。仅支持linux系统和mysql数据库，在debian6上测试和使用。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;当前版本: 0.0.4&lt;/li&gt;
+&lt;li&gt;最后更新: 2013.11.13&lt;/li&gt;
+&lt;li&gt;许可协议: &lt;a href="http://www.apache.org/licenses/LICENSE-2.0.html"&gt;Apache License, Version 2.0&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;代码仓库: &lt;a href="https://github.com/wilbur-ma/host-backup"&gt;Github&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;下载地址: &lt;a href="https://github.com/wilbur-ma/host-backup/archive/master.zip"&gt;最新版本&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;介绍&lt;/h2&gt;
+&lt;h3&gt;更新历史&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;0.0.4    2013.11.13    发送邮件时，会把备份时产生的错误输出作为邮件正文一起发送&lt;/li&gt;
+&lt;li&gt;0.0.3    2012.11.27    增加dropbox支持(需要&lt;a href="https://www.dropbox.com/developers/reference/sdk"&gt;dropbox sdk&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;0.0.2    2012.11.02    增加发送邮件功能&lt;/li&gt;
+&lt;li&gt;0.0.1    2012.10.26    第一个测试版本&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;依赖的软件&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;python2.6或python2.7&lt;/li&gt;
+&lt;li&gt;gnu tar - 文件打包&lt;/li&gt;
+&lt;li&gt;mysqldump, mysqlshow - 备份数据库和验证数据库密码&lt;/li&gt;
+&lt;li&gt;exim4, mutt - 通过邮件发送备份数据&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.dropbox.com/developers/reference/sdk"&gt;dropbox sdk&lt;/a&gt; (如果使用dropbox备份功能)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;文件列表&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="#backup-config.ini"&gt;backup-config.ini&lt;/a&gt; 备份和恢复的配置文件&lt;/li&gt;
+&lt;li&gt;host-admin.py 用于备份和恢复&lt;/li&gt;
+&lt;li&gt;aes.py aes加密和解密，取自&lt;a href="http://code.google.com/p/slowaes/"&gt;slowaes工程&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;注意事项&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;在debian上，备份/etc/mysql时必须同时备份mysql数据库中的mysql，否则恢复后会有&lt;code&gt;Stopping MySQL database server: mysqld failed&lt;/code&gt;错误，解决方法可以参考&lt;a href="/note/mysql-problems.html#a1acdbd356b3fe3bcf56df30de626dd0"&gt;这里&lt;/a&gt;&lt;ol&gt;
+&lt;li&gt;如果用exim4发送邮件时因为附件太大而发送失败，可以在/etc/exim4/update-exim4.conf.conf添加如下一行&lt;code&gt;MESSAGE_SIZE_LIMIT=1000m&lt;/code&gt;，将1000m改为你需要的大小限制即可。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3&gt;使用说明&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;1.  安装依赖的软件。
+2.  为脚本添加执行权限`chmod +x host-admin.py`。
+3.  根据需要修改配置文件。
+4.  进行备份或恢复: 
+* `./host-admin.py -c daily-backup.ini -b` 使用daily-backup.ini中的配置进行备份
+* `./host-admin.py -c daily-backup.ini -f host-backup.tar -r`使用daily-backup.ini中的配置和host-backup.tar中的数据进行恢复。
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;配置文件说明&lt;/h2&gt;
+&lt;h3&gt;backup-config.ini&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;1.  第一次使用需要按提示设置mysql密码，加密后存于配置文件中。
+2.  如果想使用新的Mysql用户或密码，只需将DB.Mysql里的User和Passwor的值设为0。
+3.  FileList里的路径必须为绝对路径，多个路径必须使用分号`:`隔开。
+4.  OwnerList使用chown修改FileList中对应项的用户归属，其中项的名称必须和FileList中的名称一致。按照下面的配置文件恢复文件后，将FileList中Dokuwiki_Data项所包含的所有路径的归属用户和归属组改为www-data，即`chown www-data:www-data %path%`。
+5.  将Mail_List设为0可禁用邮件发送功能。多个邮件地址可用分号&amp;quot;:&amp;quot;隔开。
+6.  Exclude_VCS使用gnu tar的`--exclude-vcs`选项实现。
+7.  Exclude_Pattern使用gnu tar的`--exclude`选项实现，多个pattern使用分号&amp;quot;:&amp;quot;隔开，例如剔除后缀为tmp的文件，/var/blog/tmp目录，名为conf.d的目录和所有隐藏文件(文件夹)，可以使用如下pattern: `*.tmp:/var/blog/tmp:conf.d:\.*`，单个Pattern的详细说明请参考[GNU Tar文档](http://www.gnu.org/software/tar/manual/html_node/exclude.html)。
+
+:::ini
+[OwnerList]
+dokuwiki_data = www-data:www-data
+gitlab_config = gitlab:gitlab
+git_repo = git
+
+[FileList]
+vim_config = /root/.vimrc:/root/.vim_runtime
+system_config = /etc/nginx:/etc/apache2:/etc/phpmyadmin:/etc/mysql:/etc/exim4
+crontab = /root/crontab
+gitlab_config = /home/gitlab/gitlab/config/database.yml:/home/gitlab/gitlab/config/gitlab.yml
+backup_script = /etc/cron.daily/host-backup
+git_config = /root/.gitconfig:/root/.gitignore
+dokuwiki_data = /var/www/wiki/data/pages:/var/www/wiki/data/meta:/var/www/wiki/data/attic:/var/www/wiki/conf
+
+[General]
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h1&gt;备份[FileList]中的文件时，是否排除版本控制系统的文件，参考man tar。&lt;/h1&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;exclude_vcs = 0
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h1&gt;备份文件名的日期格式，参考python的日期格式。&lt;/h1&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;date_format = %Y%m%d%H%M%S
+exclude_pattern = 0
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h1&gt;备份完毕后是否删除备份文件， 1为删除，0为不删除。&lt;/h1&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;remove_after_backup = 1
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h1&gt;恢复备份文件时，如果目标文件存在则先删除之，1为删除，0为不删除。&lt;/h1&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;remove_exist_first = 1
+
+[Repo.Git]
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h1&gt;不启用Git仓库备份功能&lt;/h1&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;root_dir = 0
+
+[DB.Mysql]
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h1&gt;使用半角冒号(:)分隔的mysql数据库列表&lt;/h1&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;db_list = 0
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h1&gt;Mysql用户名&lt;/h1&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;user = 0
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h1&gt;Mysql密码&lt;/h1&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;password = 0
+
+[Backup]
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h1&gt;设为1则启用dropbox备份，0为不启用。&lt;/h1&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;with_dropbox = 0
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h1&gt;设为1则启用email备份，0为不启用。&lt;/h1&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;with_email = 1
+
+[Email]
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h1&gt;使用半角冒号(:)分隔的邮件列表&lt;/h1&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;mail_list = 0
+
+[Dropbox]
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h1&gt;不要手动填写&lt;/h1&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;access_token = 0
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h1&gt;dropbox的备份文件夹，/为根目录&lt;/h1&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;target_dir = /host-backup
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h1&gt;你的APP_SECRET&lt;/h1&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;app_secret = 0
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h1&gt;你的APP_KEY&lt;/h1&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;app_key = 0
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h1&gt;Dropbox用户名&lt;/h1&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;user = 0
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h1&gt;Dropbox密码，不要手动填写&lt;/h1&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;password = 0
+&lt;/pre&gt;&lt;/div&gt;</summary><category term="python"></category><category term="backup"></category></entry></feed>

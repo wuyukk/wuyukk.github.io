@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>anthony - YUM</title>
+        <link rel="stylesheet" href="http://wuyukk.github.io/theme/css/main.css" />
+        <link href="http://wuyukk.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="anthony Atom Feed" />
+
+        <!--[if IE]>
+            <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="http://wuyukk.github.io/">anthony </a></h1>
+                <nav><ul>
+                    <li><a href="http://wuyukk.github.io/category/editor.html">editor</a></li>
+                    <li><a href="http://wuyukk.github.io/category/espruino.html">espruino</a></li>
+                    <li><a href="http://wuyukk.github.io/category/git.html">git</a></li>
+                    <li><a href="http://wuyukk.github.io/category/test.html">test</a></li>
+                    <li class="active"><a href="http://wuyukk.github.io/category/yum.html">YUM</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+
+            <aside id="featured" class="body">
+                <article>
+                    <h1 class="entry-title"><a href="http://wuyukk.github.io/yum-tricks.html">yum tricks</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2015-10-10T21:46:00+02:00">
+                Published: Sat 10 October 2015
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="http://wuyukk.github.io/author/anthony.html">anthony</a>
+        </address>
+<p>In <a href="http://wuyukk.github.io/category/yum.html">YUM</a>.</p>
+
+</footer><!-- /.post-info --><h1>Yum Tricks and Tips</h1>
+<p>Note: These tricks are only available on SLF5 and newer releases. They require yum 3.2.22 or newer.</p>
+<ul>
+<li>yum provides (feature)
+Is used to find out what package provides some feature.
+Example: yum provides zip
+yum provides "<em>/(file)"
+Is used to find out what package provides a certain file. This is especially useful when you are compiling some code and get an error like "error: libbluetooth.so.2 not found, exiting."
+Example: yum provides "</em>/libbluetooth.so.2"</li>
+<li>yum makecache
+Is used to download and make usable all the metadata for the currently enabled yum repos.
+yum --showduplicates (command) (package)
+Doesn't limit packages to their latest versions in the info, list and search commands
+Example: yum --showduplicates list firefox</li>
+<li>yum downgrade
+Will try and downgrade a package from the version currently installed to the previously highest version (or the specified version). The depsolver will not necessarily work, but if you specify all the packages it should work (and thus. all the simple cases will work). Also this does not work for "installonly" packages, like Kernels. downgrade operates on groups, files, provides and filelists just like the "install" command.
+Examples:
+yum downgrade glibc*
+yum downgrade firefox-3.6.7-3.el5</li>
+<li>yum reinstall
+Will reinstall the identically versioned package as is currently installed.
+Example: yum reinstall yum
+yum-complete-transaction
+is a program which finds incomplete or aborted yum transactions on a system and attempts to complete them. This program is in the yum-utils package.
+yum install yum-utils
+Example: yum-complete-transaction</li>
+</ul>
+<h1>Yum Group Tricks</h1>
+<p>Note: You will see the following "group name" in these tips. You need to keep the quotes on the name when doing this, because some group names have a space in them. So if the group name was KDE Desktop, you would install it by doing yum install "KDE Desktop"</p>
+<ul>
+<li>yum grouplist
+Is used to list the available groups from all yum repos. Groups are marked as "installed" if all mandatory packages are installed, or if a group doesn't have any mandatory packages then it is installed if any of the optional or default package are installed.</li>
+<li>yum groupinfo "group name"
+Is used to give the description and package list of a group
+yum groupinstall "group name"
+Is used to install all of the individual packages in a group. This works as if you'd taken each of those package names and put them on the command line for a "yum install" command.</li>
+<li>yum groupremove "group name"
+It is worth pointing out that packages can be in more than one group, so "groupinstall X Y" followed by "groupremove Y" does not do give you the same result as "groupinstall X".
+yum groupupdate "group name"
+Is just an alias for groupinstall, which will do the right thing because "yum install X" and "yum update X" do the same thing, when X is already installed.</li>
+</ul>
+<p>Even More</p>
+<p>If you want to find even more things that rpm can do, the best place to start is the man page, followed by the Yum Wiki.
+<code>man yum</code>
+Yum Wiki </p>                </article>
+            </aside><!-- /#featured -->
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>blogroll</h2>
+                        <ul>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                            <li><a href="http://python.org/">Python.org</a></li>
+                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+                            <li><a href="http://wuyukk.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>
