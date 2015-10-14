@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="keywords" content="vim">
+        <meta name="description" content="vim setup 这是设置显示行号 set nu 设置在命令行界面最下面显示当前模式等。 set showmode 在右下角显示光标所在的行数等信息 set ruler 设置每次单击Enter键后，光标移动到下一行时与上一行的起始字符对齐 set autoindent 即设置语法检测，当编辑C或者Shell脚本时，关键字会用特殊颜色显示 syntax on 通过putty或者securecrt连到linux服务器，使用vi编辑.php 或.c文件时， 蓝色的注释很淡，看不清，看起来很费眼 效果如下 我本身有习惯于默认配色，不想修改配色方案，只想把看不清蓝色的注释换掉，修改成目录的蓝色 翻了翻相关资料，大部分都是修改配色方案，最后发现可以通过hi命令来修改注释的颜色。 hi指令使用方法 设置关键字为蓝色非粗体 ：hi Identifier ctermfg =blue cterm =none （bold 就设置成粗体） 那我们的问题就可以通过添加一条hi指令解决了 vi ~/.vimrc 加入如下内容 ...">
+        <title>vim setup - anthony</title>
+        <link rel="shortcut icon" type="image/x-icon" href="/favicon.png">
+        <link rel="stylesheet" href="http://anthony42.xyz/theme/css/bootstrap.min.css" type="text/css" />
+        <link rel="stylesheet" href="http://anthony42.xyz/theme/font-icons/style.min.css" type="text/css" />
+        <link rel="stylesheet" href="http://anthony42.xyz/theme/css/niu2.min.css" type="text/css" />
+        <link rel="canonical" href="http://anthony42.xyz/vim-setup.html" />
+        <script type="text/javascript">window.onload=function(){};</script>
+        <!--[if lt IE 9]>
+            <script src="http://anthony42.xyz/theme/js/html5shiv.js"></script>
+            <script src="http://anthony42.xyz/theme/js/respond.min.js"></script>
+        <![endif]-->
+    </head>
+    <body> 
+        <div id="body-header">
+            <div class="navbar navbar-inverse navbar-fixed-top">
+                <div class="col-md-12">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="http://anthony42.xyz">
+                            <i class="icon-home"></i>anthony
+                        </a>
+                    </div>
+                    <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
+                        <ul class="nav navbar-nav">
+                        <li><a href="http://anthony42.xyz/tags.html">
+                                <i class="icon-tag"></i>Tag</a>
+                        </li>
+                        <li><a href="http://anthony42.xyz/archives.html">
+                                <i class="icon-archive"></i>Archive
+                            </a>
+                        </li>
+                        <!-- category dropdown list -->
+                        <!--  self defined dropdown list -->
+                        </ul>
+                        
+                        <!-- right nav bar -->
+                        <ul class="nav navbar-nav navbar-right">
+                        <!-- google custom search -->
+                       </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+
+        <div id="body-content">
+            <div class="col-md-8 col-md-offset-2">
+                <h1 id="content-heading">vim setup</h1>
+            </div>
+            <div id="niu2-left-container" class="col-md-6 col-md-offset-2 with-right-border">
+                <div id="niu2-main-content">
+                    <h2 id="0da62239f1ffa214523bb34e92d15810">vim setup</h2>
+<ul>
+<li>
+<p>这是设置显示行号</p>
+<p><code>set nu</code></p>
+</li>
+<li>
+<p>设置在命令行界面最下面显示当前模式等。</p>
+<p><code>set  showmode</code></p>
+</li>
+<li>
+<p>在右下角显示光标所在的行数等信息</p>
+<p><code>set   ruler</code></p>
+</li>
+<li>
+<p>设置每次单击Enter键后，光标移动到下一行时与上一行的起始字符对齐</p>
+<p><code>set autoindent</code></p>
+</li>
+<li>
+<p>即设置语法检测，当编辑C或者Shell脚本时，关键字会用特殊颜色显示</p>
+<p><code>syntax on</code></p>
+</li>
+</ul>
+<hr/>
+<p>通过putty或者securecrt连到linux服务器，使用vi编辑<em>.php 或</em>.c文件时，</p>
+<p>蓝色的注释很淡，看不清，看起来很费眼</p>
+<p>效果如下</p>
+<p>我本身有习惯于默认配色，不想修改配色方案，只想把看不清蓝色的注释换掉，修改成目录的蓝色</p>
+<p>翻了翻相关资料，大部分都是修改配色方案，最后发现可以通过hi命令来修改注释的颜色。</p>
+<h2 id="54c7451f5aeb7666712ffb08d11eccc0">hi指令使用方法</h2>
+<p>设置关键字为蓝色非粗体 ：hi Identifier ctermfg =blue cterm =none （bold 就设置成粗体）</p>
+<p>那我们的问题就可以通过添加一条hi指令解决了</p>
+<p><code>vi ~/.vimrc</code> 加入如下内容</p>
+<p><code>hi Comment ctermfg =blue</code></p>
+<p>修改后效果</p>
+<p>以下是vim不同关键字字体颜色修改方法</p>
+<h4 id="5551ee6074ddcc9f520741307155172e">修改字符串颜色</h4>
+<p><code>hi String ctermfg =darkred</code></p>
+<h4 id="d678bfe5fc3b162e871e8717a88ff9cb">修改类型颜色</h4>
+<p><code>hi Type ctermfg =yellow</code></p>
+<h4 id="c2e95fd6278dd878b8405adf8dae3b5d">修改数字颜色</h4>
+<p><code>hi Number ctermfg =darkblue</code></p>
+<h4 id="1880ab4a98efbe39efa00c38b95844c7">修改常量颜色</h4>
+<p><code>hi Constant ctermfg =blue</code></p>
+<h4 id="8e369f41810e4520bc82a00cdf48a9f7">修改声明颜色</h4>
+                </div>
+                <div id="content-comments">
+                </div>
+
+            </div>
+            <div class="niu2-right-container col-md-2">
+                <div id="niu2-sidebar-meta" class="niu2-sidebar">
+                    <div class="niu2-sidebar-label"><i class="icon-calendar"></i>Published:</div>
+                    <div class="niu2-sidebar-value">2015-10-10 12:14</div>
+                    <div class="niu2-sidebar-label"><i class="icon-open-folder"></i>Category:</div>
+                    <div class="niu2-sidebar-value"><a href="http://anthony42.xyz/category/editor.html">editor</a></div>
+                    <div class="niu2-sidebar-label"><i class="icon-tag"></i>Tag:</div>
+                    <div class="niu2-sidebar-inter-value niu2-sidebar-tag"><a href="http://anthony42.xyz/tag/vim.html">vim</a><sup>1</sup></div>
+                </div>
+
+                <div id="niu2-sidebar-toc" class="niu2-sidebar" data-status="closed">
+                    <div class="niu2-sidebar-label">
+                        <i id="niu2-sidebar-toc-ctrl" class="icon-open-tocs"></i>TOC
+                    </div>
+                    <ul id="niu2-sidebar-toc-list">
+                        <li><a href="#content-heading">vim setup</a></li>
+                        <li><a href='#0da62239f1ffa214523bb34e92d15810'>vim setup</a></li><li><a href='#54c7451f5aeb7666712ffb08d11eccc0'>hi指令使用方法</a><ul><li><a href='#5551ee6074ddcc9f520741307155172e'>修改字符串颜色</a></li><li><a href='#d678bfe5fc3b162e871e8717a88ff9cb'>修改类型颜色</a></li><li><a href='#c2e95fd6278dd878b8405adf8dae3b5d'>修改数字颜色</a></li><li><a href='#1880ab4a98efbe39efa00c38b95844c7'>修改常量颜色</a></li><li><a href='#8e369f41810e4520bc82a00cdf48a9f7'>修改声明颜色</a></li></ul></li>
+                    </ul>
+                </div>
+            </div>
+            <div id="niu2-toc" data-style="fixed"></div>
+        </div>
+
+        <div class="niu2-footer">
+            <div id="body-footer" class="col-md-6 col-md-offset-2">
+                <hr/>
+                <p>
+                    Powered by <a href="https://github.com/getpelican/pelican">Pelican</a>, 
+                    <a href="https://github.com/mawenbao/niu-x2-sidebar">theme</a> built with <a href="https://github.com/twbs/bootstrap">Bootstrap3</a>
+                    by <a href="https://blog.mawenbao.com">Ma Wenbao</a>, icons by 
+                    <a href="https://fortawesome.github.io/Font-Awesome">Font Awesome</a>.
+                </p>
+                <p>
+                    ©
+                            2013-2015
+                    <a class="niu2-footer-link" href="http://anthony42.xyz">anthony</a>
+                </p>
+                <p class="niu2-icons">
+                </p>
+            </div>
+        </div>
+
+        <div id="niu2-pygments" data-theme="github"></div>
+        <script type="text/javascript" src="http://anthony42.xyz/theme/js/jquery-1.11.0.min.js"></script>
+        <script type="text/javascript" src="http://anthony42.xyz/theme/js/niu2.min.js"></script>
+        <script type="text/javascript" src="http://anthony42.xyz/theme/js/bootstrap.min.js"></script>
+        <script type="text/javascript">
+            onContentLoaded();
+        </script>
+    </body>
+</html>
