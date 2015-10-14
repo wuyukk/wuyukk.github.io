@@ -153,24 +153,7 @@ clear up a lot of potential questions about the Espruino architecture.&lt;/p&gt;
 so because we make money from the sales of Espruino boards. If your users request
 support from us then we have absolutely no obligation to help them. However, we'll
 be a lot more motivated if you're actively helping to improve Espruino for all its
-users (not just your own).&lt;/p&gt;</summary></entry><entry><title>VIM Config</title><link href="http://anthony42.xyz/vim-config.html" rel="alternate"></link><updated>2015-10-10T22:00:00+02:00</updated><author><name>anthony</name></author><id>tag:anthony42.xyz,2015-10-10:vim-config.html</id><summary type="html">&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;set nu         // 这是设置显示行号&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;set  showmode   //设置在命令行界面最下面显示当前模式等。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;set   ruler     // 在右下角显示光标所在的行数等信息&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;set autoindent   // 设置每次单击Enter键后，光标移动到下一行时与上一行的起始字符对齐&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;syntax on    // 即设置语法检测，当编辑C或者Shell脚本时，关键字会用特殊颜色显示&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;hr/&gt;</summary></entry><entry><title>yum tricks</title><link href="http://anthony42.xyz/yum-tricks.html" rel="alternate"></link><updated>2015-10-10T21:46:00+02:00</updated><author><name>anthony</name></author><id>tag:anthony42.xyz,2015-10-10:yum-tricks.html</id><summary type="html">&lt;h1 id="45d46497cc95919594d8173e2e6c5924"&gt;Yum Tricks and Tips&lt;/h1&gt;
+users (not just your own).&lt;/p&gt;</summary></entry><entry><title>yum tricks</title><link href="http://anthony42.xyz/yum-tricks.html" rel="alternate"></link><updated>2015-10-10T21:46:00+02:00</updated><author><name>anthony</name></author><id>tag:anthony42.xyz,2015-10-10:yum-tricks.html</id><summary type="html">&lt;h1 id="45d46497cc95919594d8173e2e6c5924"&gt;Yum Tricks and Tips&lt;/h1&gt;
 &lt;p&gt;Note: These tricks are only available on SLF5 and newer releases. They require yum 3.2.22 or newer.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;yum provides (feature)

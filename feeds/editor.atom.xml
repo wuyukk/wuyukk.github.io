@@ -1,19 +1,2 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>anthony</title><link href="http://anthony42.xyz/" rel="alternate"></link><link href="http://anthony42.xyz/feeds/editor.atom.xml" rel="self"></link><id>http://anthony42.xyz/</id><updated>2015-10-10T22:00:00+02:00</updated><entry><title>VIM Config</title><link href="http://anthony42.xyz/vim-config.html" rel="alternate"></link><updated>2015-10-10T22:00:00+02:00</updated><author><name>anthony</name></author><id>tag:anthony42.xyz,2015-10-10:vim-config.html</id><summary type="html">&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;set nu         // 这是设置显示行号&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;set  showmode   //设置在命令行界面最下面显示当前模式等。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;set   ruler     // 在右下角显示光标所在的行数等信息&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;set autoindent   // 设置每次单击Enter键后，光标移动到下一行时与上一行的起始字符对齐&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;syntax on    // 即设置语法检测，当编辑C或者Shell脚本时，关键字会用特殊颜色显示&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;hr/&gt;</summary></entry><entry><title>Markdown</title><link href="http://anthony42.xyz/markdown.html" rel="alternate"></link><updated>2015-10-10T00:00:00+02:00</updated><author><name>anthony</name></author><id>tag:anthony42.xyz,2015-10-10:markdown.html</id><summary type="html">&lt;p&gt;[Markdown was created to be easy to read, easy to write, and still readable in plain text format.]&lt;/p&gt;</summary></entry></feed>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>anthony</title><link href="http://anthony42.xyz/" rel="alternate"></link><link href="http://anthony42.xyz/feeds/editor.atom.xml" rel="self"></link><id>http://anthony42.xyz/</id><updated>2015-10-10T00:00:00+02:00</updated><entry><title>Markdown</title><link href="http://anthony42.xyz/markdown.html" rel="alternate"></link><updated>2015-10-10T00:00:00+02:00</updated><author><name>anthony</name></author><id>tag:anthony42.xyz,2015-10-10:markdown.html</id><summary type="html">&lt;p&gt;[Markdown was created to be easy to read, easy to write, and still readable in plain text format.]&lt;/p&gt;</summary></entry></feed>
